@@ -118,8 +118,21 @@
 
         document.body.style.overflow = 'hidden';
 
-        if (pageWrapper) pageWrapper.style.filter = `contrast(1.5) sepia(80%) hue-rotate(-50deg)`;
-        else document.body.style.filter = `contrast(1.5) sepia(80%) hue-rotate(-50deg)`;
+        if (pageWrapper) {
+            pageWrapper.style.filter = `grayscale(100%)`;
+            pageWrapper.style.pointerEvents = `none`;
+        }
+        
+        const footer = document.querySelector('footer');
+        if (footer) {
+            footer.style.filter = `grayscale(100%)`;
+            footer.style.pointerEvents = `none`;
+        }
+        
+        if (!pageWrapper && !footer) {
+            document.body.style.filter = `grayscale(100%)`;
+            document.body.style.pointerEvents = `none`;
+        }
 
         spamInterval = setInterval(createInvasivePopup, 200);
 
@@ -132,19 +145,12 @@
         
     };
 
-    // O SI INTENTAN IRSE DE LA PÁGINA (Intent Exit pattern)
-    document.addEventListener('mouseleave', (e) => {
-        if (e.clientY <= 10) {
-            window.startInvasion();
-        }
-    });
-
     window.addEventListener('beforeunload', function (e) {
-        if (window.invasionTriggered) {
+        if (!window.invasionTriggered) {
             window.startInvasion();
-            e.preventDefault();
-            e.returnValue = 'La autoridad no responde. ¿Seguro que quieres ignorarlo?';
         }
+        e.preventDefault();
+        e.returnValue = '¿Confirmar reenvío del formulario?';
     });
 
     function createInvasivePopup() {
