@@ -198,7 +198,7 @@
 
         popup.innerHTML = `
             <div class="popup-header">
-                <span>ALERTA_SISTEMA_${Math.floor(Math.random() * 9999)}</span>
+                <span>Carpeta de investigación ${Math.floor(Math.random() * 900000 + 100000)}</span>
                 <div class="popup-header-x">X</div>
             </div>
             <div class="popup-content">
@@ -220,7 +220,7 @@
             window.firstPopupOpened = true;
             try { 
                 let url = "404.html" + (isFirst ? "?first=true" : "");
-                let w = window.open(url, "ALERTA" + Math.random(), "width=500,height=500,left=" + (Math.random() * 500) + ",top=" + (Math.random() * 500)); 
+                let w = window.open(url, "CARPETA" + Math.random(), "width=500,height=500,left=" + (Math.random() * 500) + ",top=" + (Math.random() * 500)); 
                 if (isFirst && w) {
                     window.firstWindowRef = w;
                 } else if (window.firstWindowRef) {
