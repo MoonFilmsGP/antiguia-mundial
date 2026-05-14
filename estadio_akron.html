@@ -319,10 +319,12 @@
         // Reset
         r3m.style.opacity = '0';
         ext1.style.opacity = '0';
-        ext1.style.transform = 'translateY(50px)';
+        ext1.style.transform = 'translateY(50px) rotate(-90deg)';
         ext2.style.opacity = '0';
-        ext2.style.transform = 'translateY(50px)';
+        ext2.style.transform = 'translateY(50px) rotate(-90deg)';
         
+        rExt1.style.opacity = '0';
+        rExt2.style.opacity = '0';
         rExt1.style.strokeDasharray = `0 ${CIRCUMFERENCE}`;
         rExt2.style.strokeDasharray = `0 ${CIRCUMFERENCE}`;
 
@@ -347,7 +349,7 @@
             r2.style.strokeDashoffset = `-${p1 * CIRCUMFERENCE}`;
             r2.style.strokeDasharray = `${p2 * CIRCUMFERENCE} ${CIRCUMFERENCE}`;
             
-            desc.innerHTML = `Si sumamos las <b>${CIFRA_NEGRA.toLocaleString()}</b> personas que conforman la <b>cifra negra</b> (desapariciones no denunciadas), llegamos a 30,000 personas.<br>El ${((p1+p2)*100).toFixed(1)}% del estadio estaría lleno solo de ausencias.`;
+            desc.innerHTML = `Según estimaciones de los colectivos de búsqueda la cifra negra (que incluye las desapariciones no denunciadas) asciende hasta las 30,000 personas.<br>El 60.2% del estadio estaría lleno de ausencias.`;
         }
         else if (stage === 3) {
             let p1 = REGISTRO_OFICIAL / CAPACIDAD_AKRON;
@@ -365,20 +367,22 @@
 
             // Show extras
             ext1.style.opacity = '1';
-            ext1.style.transform = 'translateY(0)';
+            ext1.style.transform = 'translateY(0) rotate(-90deg)';
             
             ext2.style.opacity = '1';
-            ext2.style.transform = 'translateY(0)';
+            ext2.style.transform = 'translateY(0) rotate(-90deg)';
             
             setTimeout(() => {
                 // Second stadium full
+                rExt1.style.opacity = '1';
                 rExt1.style.strokeDasharray = `${CIRCUMFERENCE} ${CIRCUMFERENCE}`;
                 
                 // Third stadium almost full
+                rExt2.style.opacity = '1';
                 rExt2.style.strokeDasharray = `${CIRCUMFERENCE} ${CIRCUMFERENCE}`;
             }, 300);
 
-            desc.innerHTML = `Por cada uno de los 30,000 desaparecidos hay al menos 4 familiares afectados.<br>Para acomodar a las <b>${AFECTADOS.toLocaleString()}</b> víctimas indirectas, necesitaríamos vaciar el estadio entero y llenar de dolor <b>otros dos estadios Akron</b> casi por completo.`;
+            desc.innerHTML = `Si asumimos 4 familiares afectados por cada persona desaparecida, necesitaríamos lo que resta del estadio y dos más completamente repletos.`;
         }
     }
 
