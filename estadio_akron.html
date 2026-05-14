@@ -166,6 +166,7 @@
 
         .ring-oficial { stroke: #df3061; } /* gob-red */
         .ring-negra { stroke: #e7a637; } /* gob-gold */
+        .ring-restos { stroke: #757575; } /* dark gray */
         .ring-afectados { stroke: #000; opacity: 0; } 
 
         .extra-stadium {
@@ -253,6 +254,8 @@
                 <rect class="donut-ring ring-oficial" x="-70" y="-120" width="140" height="240" rx="70" ry="70" id="ring-1"></rect>
                 <!-- Cifra Negra -->
                 <rect class="donut-ring ring-negra" x="-70" y="-120" width="140" height="240" rx="70" ry="70" id="ring-2"></rect>
+                <!-- Restos -->
+                <rect class="donut-ring ring-restos" x="-70" y="-120" width="140" height="240" rx="70" ry="70" id="ring-restos"></rect>
                 <!-- Afectados (Main Fill) -->
                 <rect class="donut-ring ring-afectados" x="-70" y="-120" width="140" height="240" rx="70" ry="70" id="ring-3-main"></rect>
                 
@@ -273,13 +276,21 @@
                 <rect class="donut-ring ring-afectados" x="-70" y="-120" width="140" height="240" rx="70" ry="70" id="ring-extra-2"></rect>
                 <text x="0" y="5" font-family="Oswald" font-size="24" fill="#666" text-anchor="middle" transform="rotate(90)">AKRON III</text>
             </svg>
+
+            <!-- Extra Stadium 3 -->
+            <svg class="donut-svg extra-stadium" viewBox="-150 -180 300 360" id="stadium-extra-3">
+                <rect class="donut-bg" x="-70" y="-120" width="140" height="240" rx="70" ry="70"></rect>
+                <rect class="donut-ring ring-afectados" x="-70" y="-120" width="140" height="240" rx="70" ry="70" id="ring-extra-3"></rect>
+                <text x="0" y="5" font-family="Oswald" font-size="24" fill="#666" text-anchor="middle" transform="rotate(90)">AKRON IV</text>
+            </svg>
         </div>
 
         <div class="controls">
             <button class="btn-stage active" onclick="setStage(0)" id="btn-0">0. Capacidad</button>
             <button class="btn-stage" onclick="setStage(1)" id="btn-1">1. Registro Oficial</button>
             <button class="btn-stage" onclick="setStage(2)" id="btn-2">2. Cifra Negra</button>
-            <button class="btn-stage" onclick="setStage(3)" id="btn-3">3. Víctimas Indirectas</button>
+            <button class="btn-stage" onclick="setStage(3)" id="btn-3">3. Restos sin Identificar</button>
+            <button class="btn-stage" onclick="setStage(4)" id="btn-4">4. Víctimas Indirectas</button>
         </div>
     </main>
 
@@ -295,7 +306,8 @@
     const CAPACIDAD_AKRON = 49850;
     const REGISTRO_OFICIAL = 16143;
     const CIFRA_NEGRA = 13857;
-    const AFECTADOS = 30000 * 4; // 120,000
+    const RESTOS = 9300;
+    const AFECTADOS = 120000;
 
     const CIRCUMFERENCE = 639.823; // Perimeter of the stadium rect
 
@@ -307,26 +319,34 @@
 
         const r1 = document.getElementById('ring-1');
         const r2 = document.getElementById('ring-2');
+        const rRestos = document.getElementById('ring-restos');
         const r3m = document.getElementById('ring-3-main');
         
         const ext1 = document.getElementById('stadium-extra-1');
         const rExt1 = document.getElementById('ring-extra-1');
         const ext2 = document.getElementById('stadium-extra-2');
         const rExt2 = document.getElementById('ring-extra-2');
+        const ext3 = document.getElementById('stadium-extra-3');
+        const rExt3 = document.getElementById('ring-extra-3');
         
         const desc = document.getElementById('desc-text');
 
         // Reset
+        rRestos.style.strokeDasharray = `0 ${CIRCUMFERENCE}`;
         r3m.style.opacity = '0';
         ext1.style.opacity = '0';
         ext1.style.transform = 'translateY(50px) rotate(-90deg)';
         ext2.style.opacity = '0';
         ext2.style.transform = 'translateY(50px) rotate(-90deg)';
+        ext3.style.opacity = '0';
+        ext3.style.transform = 'translateY(50px) rotate(-90deg)';
         
         rExt1.style.opacity = '0';
         rExt2.style.opacity = '0';
+        rExt3.style.opacity = '0';
         rExt1.style.strokeDasharray = `0 ${CIRCUMFERENCE}`;
         rExt2.style.strokeDasharray = `0 ${CIRCUMFERENCE}`;
+        rExt3.style.strokeDasharray = `0 ${CIRCUMFERENCE}`;
 
         if (stage === 0) {
             r1.style.strokeDasharray = `0 ${CIRCUMFERENCE}`;
@@ -354,16 +374,32 @@
         else if (stage === 3) {
             let p1 = REGISTRO_OFICIAL / CAPACIDAD_AKRON;
             let p2 = CIFRA_NEGRA / CAPACIDAD_AKRON;
+            let p3 = RESTOS / CAPACIDAD_AKRON;
             
-            // Keep the disappeared people intact
             r1.style.strokeDasharray = `${p1 * CIRCUMFERENCE} ${CIRCUMFERENCE}`;
             r2.style.strokeDashoffset = `-${p1 * CIRCUMFERENCE}`;
             r2.style.strokeDasharray = `${p2 * CIRCUMFERENCE} ${CIRCUMFERENCE}`;
             
+            rRestos.style.strokeDashoffset = `-${(p1 + p2) * CIRCUMFERENCE}`;
+            rRestos.style.strokeDasharray = `${p3 * CIRCUMFERENCE} ${CIRCUMFERENCE}`;
+            
+            desc.innerHTML = `Sin identificar hay alrededor de 1,300 cuerpos en todo el estado de jalisco y segmentos humanos cerca de 8,000 según el Instituto Jaliscience de Ciencias Forenses.`;
+        }
+        else if (stage === 4) {
+            let p1 = REGISTRO_OFICIAL / CAPACIDAD_AKRON;
+            let p2 = CIFRA_NEGRA / CAPACIDAD_AKRON;
+            let p3 = RESTOS / CAPACIDAD_AKRON;
+            
+            r1.style.strokeDasharray = `${p1 * CIRCUMFERENCE} ${CIRCUMFERENCE}`;
+            r2.style.strokeDashoffset = `-${p1 * CIRCUMFERENCE}`;
+            r2.style.strokeDasharray = `${p2 * CIRCUMFERENCE} ${CIRCUMFERENCE}`;
+            rRestos.style.strokeDashoffset = `-${(p1 + p2) * CIRCUMFERENCE}`;
+            rRestos.style.strokeDasharray = `${p3 * CIRCUMFERENCE} ${CIRCUMFERENCE}`;
+            
             // Fill the rest of the main stadium with black
             r3m.style.opacity = '1';
-            r3m.style.strokeDashoffset = `-${(p1 + p2) * CIRCUMFERENCE}`;
-            r3m.style.strokeDasharray = `${(1 - p1 - p2) * CIRCUMFERENCE} ${CIRCUMFERENCE}`;
+            r3m.style.strokeDashoffset = `-${(p1 + p2 + p3) * CIRCUMFERENCE}`;
+            r3m.style.strokeDasharray = `${(1 - p1 - p2 - p3) * CIRCUMFERENCE} ${CIRCUMFERENCE}`;
 
             // Show extras
             ext1.style.opacity = '1';
@@ -371,19 +407,31 @@
             
             ext2.style.opacity = '1';
             ext2.style.transform = 'translateY(0) rotate(-90deg)';
+
+            ext3.style.opacity = '1';
+            ext3.style.transform = 'translateY(0) rotate(-90deg)';
             
             setTimeout(() => {
                 // Second stadium full
                 rExt1.style.opacity = '1';
                 rExt1.style.strokeDasharray = `${CIRCUMFERENCE} ${CIRCUMFERENCE}`;
                 
-                // Third stadium almost full
+                // Third stadium full
                 rExt2.style.opacity = '1';
                 rExt2.style.strokeDasharray = `${CIRCUMFERENCE} ${CIRCUMFERENCE}`;
+
+                // Fourth stadium partial
+                rExt3.style.opacity = '1';
+                let filledInMain = CAPACIDAD_AKRON - (REGISTRO_OFICIAL + CIFRA_NEGRA + RESTOS);
+                let leftToFill = AFECTADOS - filledInMain;
+                let stadium4Fill = leftToFill - (CAPACIDAD_AKRON * 2); // 9750
+                let pExt3 = stadium4Fill / CAPACIDAD_AKRON;
+                rExt3.style.strokeDasharray = `${pExt3 * CIRCUMFERENCE} ${CIRCUMFERENCE}`;
             }, 300);
 
             desc.innerHTML = `Si asumimos 4 familiares afectados por cada persona desaparecida, necesitaríamos lo que resta del estadio y dos más completamente repletos.`;
         }
+    }
     }
 
 </script>
