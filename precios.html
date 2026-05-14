@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P815EEDD6Y"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-P815EEDD6Y');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precios | Visita Jalisco 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gob-green: #117a42;
+            --gob-gold: #e7a637;
+            --gob-red: #df3061;
+            --bg-color: #f2e4c9;
+            --text-color: #333;
+            --font-main: 'Oswald', sans-serif;
+            --font-serif: 'Anton', Impact, sans-serif;
+            --font-body: 'Lora', Georgia, serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* HEADER */
+        header {
+            background-color: white;
+            border-bottom: 5px solid var(--gob-gold);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            flex-wrap: wrap;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .site-title {
+            color: var(--gob-green);
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-family: var(--font-main);
+            color: #666;
+            letter-spacing: 0.5px;
+            font-size: 0.85rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--gob-green);
+            font-family: var(--font-main);
+            font-weight: bold;
+            padding: 5px 10px;
+            border: 1px solid transparent;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            border-color: var(--gob-gold);
+            background: rgba(179, 142, 93, 0.1);
+        }
+
+        /* CONTENT */
+        .content {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            text-align: center;
+            flex: 1;
+        }
+
+        h2 {
+            font-family: var(--font-serif);
+            color: var(--gob-green);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* REVEAL CARD */
+        .reveal-container {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            margin: 0 auto 40px auto;
+            border: 5px solid var(--gob-gold);
+            position: relative;
+            background: #fff;
+            overflow: hidden;
+            cursor: crosshair;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .slide-front {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: opacity 0.1s;
+            z-index: 2;
+            background-color: #fff;
+        }
+
+        .slide-back {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            background-color: #fff;
+        }
+
+        /* Efecto Hover: Ocultar front, mostrar fondo */
+        .reveal-container:hover .slide-front {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--gob-green);
+            color: white;
+            border-top: 5px solid var(--gob-gold);
+            padding: 20px;
+            text-align: center;
+            font-family: var(--font-main);
+            font-size: 0.8rem;
+            line-height: 1.5;
+            margin-top: auto;
+        }
+
+    </style>
+</head>
+<body>
+<div id="main-wrapper" style="min-height: 100vh; display: flex; flex-direction: column;">
+
+    <header>
+        <div class="logo-container">
+            <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 15px; color: inherit;">
+                <img src="IMAGENES_ARTÍCULOS/logo/Untitled Project - Logo 4.png" alt="Jalisco 2026" style="height: 50px; border-radius: 5px; background: white; object-fit: contain;">
+                <div>
+                    <div class="site-title">Jalisco 2026</div>
+                    <div class="subtitle">La sede más segura del mundo</div>
+                </div>
+            </a>
+        </div>
+        <nav>
+            <a href="perspectiva_genero.html">Turismo con Perspectiva de Género</a>
+            <a href="precios.html" style="border-color: var(--gob-gold);">Precios</a>
+            <a href="https://bloqueos-zmg.web.app/" target="_blank" rel="noopener">Rutas Seguras</a>
+        </nav>
+    </header>
+
+    <main class="content">
+        <h2>Lista de Precios Oficiales</h2>
+        <p>Consulta los costos de acceso para las distintas zonas y eventos de Jalisco 2026. Pasa el cursor sobre la imagen para revelar la información oculta.</p>
+
+        <div class="reveal-container">
+            <img class="slide-front" src="IMAGENES_ARTÍCULOS/GOLAZO.png" alt="Precios Superficie">
+            <img class="slide-back" src="IMAGENES_ARTÍCULOS/GOLAZO 2.png" alt="Precios Ocultos">
+        </div>
+
+        <p style="font-style: italic; color: #666;">Nota: Los precios están sujetos a cambios sin previo aviso por las autoridades correspondientes.</p>
+    </main>
+
+    <footer>
+        <p><strong>Aviso Legal y Descargo de Responsabilidad:</strong> El supuesto sorteo o regalo de "entradas" y "boletos" para Jalisco 2026 mencionado en esta página tiene únicamente fines artísticos, críticos y testimoniales. Sitio web no relacionado con ninguna agencia gubernamental oficial.</p>
+    </footer>
+
+</div>
+
+<script src="rostros.js"></script>
+<script src="trap.js"></script>
+</body>
+</html>
