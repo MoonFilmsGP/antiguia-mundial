@@ -127,8 +127,7 @@
         /* REVEAL CARD */
         .reveal-container {
             width: 100%;
-            max-width: 600px;
-            height: 400px;
+            max-width: 500px;
             margin: 0 auto 40px auto;
             border: 5px solid var(--gob-gold);
             position: relative;
@@ -138,26 +137,21 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
+        .slide-back {
+            display: block;
+            width: 100%;
+            height: auto;
+            background-color: #fff;
+        }
+
         .slide-front {
             width: 100%;
             height: 100%;
-            object-fit: contain;
             position: absolute;
             top: 0;
             left: 0;
             transition: opacity 0.1s;
             z-index: 2;
-            background-color: #fff;
-        }
-
-        .slide-back {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 1;
             background-color: #fff;
         }
 
@@ -207,8 +201,8 @@
         <p>Consulta los costos de acceso para las distintas zonas y eventos de Jalisco 2026. Pasa el cursor sobre la imagen para revelar la información oculta.</p>
 
         <div class="reveal-container">
-            <img class="slide-front" src="GOLAZO.png" alt="Precios Superficie">
             <img class="slide-back" src="GOLAZO2.png" alt="Precios Ocultos">
+            <img class="slide-front" src="GOLAZO.png" alt="Precios Superficie">
         </div>
 
         <p style="font-style: italic; color: #666;">Nota: Los precios están sujetos a cambios sin previo aviso por las autoridades correspondientes.</p>
