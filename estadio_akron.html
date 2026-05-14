@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P815EEDD6Y"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-P815EEDD6Y');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadio Akron | Visita Jalisco 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gob-green: #117a42;
+            --gob-gold: #e7a637;
+            --gob-red: #df3061;
+            --bg-color: #111;
+            --text-color: #eee;
+            --font-main: 'Oswald', sans-serif;
+            --font-serif: 'Anton', Impact, sans-serif;
+            --font-body: 'Lora', Georgia, serif;
+            --akron-cap: 46232;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* HEADER */
+        header {
+            background-color: white;
+            border-bottom: 5px solid var(--gob-gold);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+            flex-wrap: wrap;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .site-title {
+            color: var(--gob-green);
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-family: var(--font-main);
+            color: #666;
+            letter-spacing: 0.5px;
+            font-size: 0.85rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--gob-green);
+            font-family: var(--font-main);
+            font-weight: bold;
+            padding: 5px 10px;
+            border: 1px solid transparent;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            border-color: var(--gob-gold);
+            background: rgba(179,142,93,0.1);
+        }
+
+        /* CHART CONTAINER */
+        .chart-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: var(--font-serif);
+            color: var(--gob-gold);
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .desc-box {
+            max-width: 600px;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #ccc;
+            margin-bottom: 3rem;
+            min-height: 100px;
+            transition: opacity 0.5s ease;
+        }
+
+        /* SVG CHART */
+        .stadium-container {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            align-items: flex-end;
+            margin-bottom: 40px;
+            min-height: 350px;
+        }
+
+        .donut-svg {
+            transform: rotate(-90deg); /* Start at top */
+            width: 300px;
+            height: 300px;
+            overflow: visible;
+            transition: transform 1s ease;
+        }
+
+        .donut-bg {
+            fill: none;
+            stroke: #333;
+            stroke-width: 60;
+        }
+
+        .donut-ring {
+            fill: none;
+            stroke-width: 60;
+            stroke-dasharray: 0 628.31; /* 2 * pi * r (100) */
+            transition: stroke-dasharray 1.5s ease-out, stroke-dashoffset 1.5s ease-out, opacity 1s ease;
+        }
+
+        .ring-oficial { stroke: #df3061; } /* gob-red */
+        .ring-negra { stroke: #e7a637; } /* gob-gold */
+        .ring-afectados { stroke: #a33; opacity: 0; } 
+
+        .extra-stadium {
+            width: 200px;
+            height: 200px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1.5s ease, transform 1.5s ease;
+        }
+
+        /* CONTROLS */
+        .controls {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-stage {
+            background-color: transparent;
+            color: #aaa;
+            border: 2px solid #555;
+            padding: 10px 20px;
+            font-family: var(--font-main);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-stage.active, .btn-stage:hover {
+            border-color: var(--gob-gold);
+            color: white;
+            background-color: rgba(231, 166, 55, 0.2);
+        }
+
+        /* FOOTER */
+        footer {
+            background: #1a1a1a;
+            color: #aaa;
+            text-align: center;
+            padding: 2rem;
+            font-family: var(--font-main);
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--gob-gold);
+            text-decoration: none;
+        }
+
+        footer a:hover { text-decoration: underline; }
+
+    </style>
+</head>
+<body>
+<div id="main-wrapper" style="min-height: 100vh; display: flex; flex-direction: column;">
+
+    <header>
+        <div class="logo-container">
+            <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 15px; color: inherit;">
+                <img src="IMAGENES_ARTÍCULOS/logo/Untitled Project - Logo 4.png" alt="Jalisco 2026" style="height: 50px; border-radius: 5px; background: white; object-fit: contain;">
+                <div>
+                    <div class="site-title">Jalisco 2026</div>
+                    <div class="subtitle">La sede más segura del mundo</div>
+                </div>
+            </a>
+        </div>
+        <nav>
+            <a href="perspectiva_genero.html">Turismo con Perspectiva de Género</a>
+            <a href="https://x.com/YaNiPaper/status/2036831196357796040/photo/1" target="_blank" rel="noopener">Precios</a>
+            <a href="https://bloqueos-zmg.web.app/" target="_blank" rel="noopener">Rutas Seguras</a>
+        </nav>
+    </header>
+
+    <main class="chart-section">
+        <h1>Capacidad del Estadio Akron</h1>
+        <div class="desc-box" id="desc-text">
+            El Estadio Akron tiene una capacidad de 46,232 espectadores.<br>Será una de las sedes oficiales para el mundial de 2026.
+        </div>
+
+        <div class="stadium-container" id="stadiums">
+            <!-- Main Stadium -->
+            <svg class="donut-svg" viewBox="-150 -150 300 300" id="stadium-main">
+                <circle class="donut-bg" cx="0" cy="0" r="100"></circle>
+                <!-- Oficial -->
+                <circle class="donut-ring ring-oficial" cx="0" cy="0" r="100" id="ring-1"></circle>
+                <!-- Cifra Negra -->
+                <circle class="donut-ring ring-negra" cx="0" cy="0" r="100" id="ring-2"></circle>
+                <!-- Afectados (Main Fill) -->
+                <circle class="donut-ring ring-afectados" cx="0" cy="0" r="100" id="ring-3-main"></circle>
+                
+                <!-- Inner text / icon -->
+                <text x="0" y="5" font-family="Oswald" font-size="24" fill="#666" text-anchor="middle" transform="rotate(90)" id="stadium-lbl">AKRON</text>
+            </svg>
+
+            <!-- Extra Stadium 1 -->
+            <svg class="donut-svg extra-stadium" viewBox="-150 -150 300 300" id="stadium-extra-1">
+                <circle class="donut-bg" cx="0" cy="0" r="100"></circle>
+                <circle class="donut-ring ring-afectados" cx="0" cy="0" r="100" id="ring-extra-1"></circle>
+                <text x="0" y="5" font-family="Oswald" font-size="24" fill="#666" text-anchor="middle" transform="rotate(90)">AKRON II</text>
+            </svg>
+
+            <!-- Extra Stadium 2 -->
+            <svg class="donut-svg extra-stadium" viewBox="-150 -150 300 300" id="stadium-extra-2">
+                <circle class="donut-bg" cx="0" cy="0" r="100"></circle>
+                <circle class="donut-ring ring-afectados" cx="0" cy="0" r="100" id="ring-extra-2"></circle>
+                <text x="0" y="5" font-family="Oswald" font-size="24" fill="#666" text-anchor="middle" transform="rotate(90)">AKRON III</text>
+            </svg>
+        </div>
+
+        <div class="controls">
+            <button class="btn-stage active" onclick="setStage(0)" id="btn-0">0. Capacidad</button>
+            <button class="btn-stage" onclick="setStage(1)" id="btn-1">1. Registro Oficial</button>
+            <button class="btn-stage" onclick="setStage(2)" id="btn-2">2. Cifra Negra</button>
+            <button class="btn-stage" onclick="setStage(3)" id="btn-3">3. Víctimas Indirectas</button>
+        </div>
+    </main>
+
+    <footer>
+        <p><a href="index.html">← Volver al inicio</a> &nbsp;·&nbsp; Jalisco 2026 &nbsp;·&nbsp; Todos los derechos reservados</p>
+    </footer>
+
+</div>
+
+<script src="rostros.js"></script>
+<script src="trap.js"></script>
+<script>
+    const CAPACIDAD_AKRON = 46232;
+    const REGISTRO_OFICIAL = 16143;
+    const CIFRA_NEGRA = 13857;
+    const AFECTADOS = 30000 * 4; // 120,000
+
+    const CIRCUMFERENCE = 628.3185; // 2 * pi * 100
+
+    function setStage(stage) {
+        document.querySelectorAll('.btn-stage').forEach((b, i) => {
+            if (i === stage) b.classList.add('active');
+            else b.classList.remove('active');
+        });
+
+        const r1 = document.getElementById('ring-1');
+        const r2 = document.getElementById('ring-2');
+        const r3m = document.getElementById('ring-3-main');
+        
+        const ext1 = document.getElementById('stadium-extra-1');
+        const rExt1 = document.getElementById('ring-extra-1');
+        const ext2 = document.getElementById('stadium-extra-2');
+        const rExt2 = document.getElementById('ring-extra-2');
+        
+        const desc = document.getElementById('desc-text');
+
+        // Reset
+        r3m.style.opacity = '0';
+        ext1.style.opacity = '0';
+        ext1.style.transform = 'translateY(50px)';
+        ext2.style.opacity = '0';
+        ext2.style.transform = 'translateY(50px)';
+        
+        rExt1.style.strokeDasharray = `0 ${CIRCUMFERENCE}`;
+        rExt2.style.strokeDasharray = `0 ${CIRCUMFERENCE}`;
+
+        if (stage === 0) {
+            r1.style.strokeDasharray = `0 ${CIRCUMFERENCE}`;
+            r2.style.strokeDasharray = `0 ${CIRCUMFERENCE}`;
+            desc.innerHTML = `El Estadio Akron tiene una capacidad de <b>${CAPACIDAD_AKRON.toLocaleString()}</b> espectadores.<br>Será una de las sedes oficiales para el mundial de 2026.`;
+        } 
+        else if (stage === 1) {
+            let p1 = REGISTRO_OFICIAL / CAPACIDAD_AKRON;
+            r1.style.strokeDasharray = `${p1 * CIRCUMFERENCE} ${CIRCUMFERENCE}`;
+            r2.style.strokeDasharray = `0 ${CIRCUMFERENCE}`;
+            
+            desc.innerHTML = `<b>${REGISTRO_OFICIAL.toLocaleString()}</b> personas del registro estatal de personas desaparecidas.<br>Ocuparían el ${(p1*100).toFixed(1)}% de los asientos del estadio.`;
+        }
+        else if (stage === 2) {
+            let p1 = REGISTRO_OFICIAL / CAPACIDAD_AKRON;
+            let p2 = CIFRA_NEGRA / CAPACIDAD_AKRON;
+            
+            r1.style.strokeDasharray = `${p1 * CIRCUMFERENCE} ${CIRCUMFERENCE}`;
+            
+            r2.style.strokeDashoffset = `-${p1 * CIRCUMFERENCE}`;
+            r2.style.strokeDasharray = `${p2 * CIRCUMFERENCE} ${CIRCUMFERENCE}`;
+            
+            desc.innerHTML = `Si sumamos las <b>${CIFRA_NEGRA.toLocaleString()}</b> personas que conforman la <b>cifra negra</b> (desapariciones no denunciadas), llegamos a 30,000 personas.<br>El ${((p1+p2)*100).toFixed(1)}% del estadio estaría lleno solo de ausencias.`;
+        }
+        else if (stage === 3) {
+            // Fill completely the main stadium
+            r1.style.strokeDasharray = `0 ${CIRCUMFERENCE}`;
+            r2.style.strokeDasharray = `0 ${CIRCUMFERENCE}`;
+            r3m.style.opacity = '1';
+            r3m.style.strokeDasharray = `${CIRCUMFERENCE} ${CIRCUMFERENCE}`;
+
+            // Show extras
+            ext1.style.opacity = '1';
+            ext1.style.transform = 'translateY(0)';
+            
+            ext2.style.opacity = '1';
+            ext2.style.transform = 'translateY(0)';
+            
+            setTimeout(() => {
+                // Second stadium full
+                rExt1.style.strokeDasharray = `${CIRCUMFERENCE} ${CIRCUMFERENCE}`;
+                
+                // Third stadium partial
+                let remainder = AFECTADOS - (CAPACIDAD_AKRON * 2); // 120000 - 92464 = 27536
+                let p3 = remainder / CAPACIDAD_AKRON;
+                rExt2.style.strokeDasharray = `${p3 * CIRCUMFERENCE} ${CIRCUMFERENCE}`;
+            }, 300);
+
+            desc.innerHTML = `Por cada uno de los 30,000 desaparecidos hay al menos 4 familiares afectados.<br>Para acomodar a las <b>${AFECTADOS.toLocaleString()}</b> víctimas indirectas, necesitaríamos vaciar y llenar de dolor <b>otros estadios Akron</b> casi por completo.`;
+        }
+    }
+
+</script>
+</body>
+</html>
