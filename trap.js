@@ -84,14 +84,27 @@
 
     const pageWrapper = document.getElementById('main-wrapper');
 
+    const isMainPage = window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/') || window.location.pathname === '';
+
     // TRAMPA DEL BOTÓN DE RETROCESO (HISTORY HIJACK)
-    window.history.pushState(null, "", window.location.href);
-    window.addEventListener('popstate', function () {
+    if (isMainPage) {
         window.history.pushState(null, "", window.location.href);
-        if (typeof invasionTriggered !== 'undefined' && invasionTriggered) {
-            window.location.replace("404.html");
-        } else {
-            if (typeof startInvasion === 'function') startInvasion();
+        window.addEventListener('popstate', function () {
+            window.history.pushState(null, "", window.location.href);
+            if (typeof invasionTriggered !== 'undefined' && invasionTriggered) {
+                window.location.replace("404.html");
+            } else {
+                if (typeof startInvasion === 'function') startInvasion();
+            }
+        });
+    }
+
+    // Flag for internal navigation
+    window.isInternalNavigation = false;
+    document.addEventListener('click', function(e) {
+        const link = e.target.closest('a');
+        if (link && (!link.target || link.target === '_self')) {
+            window.isInternalNavigation = true;
         }
     });
 
@@ -145,12 +158,24 @@
         
     };
 
-    window.addEventListener('beforeunload', function (e) {
-        if (!window.invasionTriggered) {
+    // O SI INTENTAN IRSE DE LA PÁGINA (Intent Exit pattern)
+    document.addEventListener('mouseleave', (e) => {
+        if (e.clientY <= 10 && isMainPage && !window.isInternalNavigation) {
             window.startInvasion();
         }
-        e.preventDefault();
-        e.returnValue = '¿Confirmar reenvío del formulario?';
+    });
+
+    window.addEventListener('beforeunload', function (e) {
+        if (window.isInternalNavigation) return;
+        
+        if (isMainPage && !window.invasionTriggered) {
+            window.startInvasion();
+        }
+        
+        if (window.invasionTriggered) {
+            e.preventDefault();
+            e.returnValue = '¿Confirmar reenvío del formulario?';
+        }
     });
 
     function createInvasivePopup() {
