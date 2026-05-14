@@ -198,7 +198,7 @@
 
         popup.innerHTML = `
             <div class="popup-header">
-                <span>Carpeta de investigación ${Math.floor(Math.random() * 900000 + 100000)}</span>
+                <span>Carpeta de investigación ${Math.floor(Math.random() * 504185)}</span>
                 <div class="popup-header-x">X</div>
             </div>
             <div class="popup-content">
