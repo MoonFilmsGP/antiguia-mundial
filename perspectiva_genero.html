@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P815EEDD6Y"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-P815EEDD6Y');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turismo con Perspectiva de Género | Jalisco 2026</title>
+    <meta name="description" content="Guía de espacios seguros para mujeres y disidencias en Guadalajara, y crónica del 8M 2026.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gob-green: #117a42;
+            --gob-gold: #e7a637;
+            --gob-red: #df3061;
+            --bg-color: #f2e4c9;
+            --text-color: #333;
+            --font-main: 'Oswald', sans-serif;
+            --font-serif: 'Anton', Impact, sans-serif;
+            --font-body: 'Lora', Georgia, serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-serif);
+            text-transform: uppercase;
+        }
+
+        /* HEADER */
+        header {
+            background-color: white;
+            border-bottom: 5px solid var(--gob-gold);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            flex-wrap: wrap;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .gob-logo {
+            width: 50px;
+            height: 50px;
+            background-color: var(--gob-red);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        .site-title {
+            color: var(--gob-green);
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-family: var(--font-main);
+            color: #666;
+            letter-spacing: 0.5px;
+            font-size: 0.85rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--gob-green);
+            font-family: var(--font-main);
+            font-weight: bold;
+            padding: 5px 10px;
+            border: 1px solid transparent;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            border-color: var(--gob-gold);
+            background: rgba(179,142,93,0.1);
+        }
+
+        nav a.active {
+            border-color: var(--gob-green);
+            background: rgba(17,122,66,0.08);
+        }
+
+        /* HERO BANNER */
+        .page-hero {
+            background: linear-gradient(135deg, #7b1f4b 0%, #df3061 40%, #e7a637 100%);
+            color: white;
+            padding: 5rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 20px,
+                rgba(255,255,255,0.04) 20px,
+                rgba(255,255,255,0.04) 40px
+            );
+        }
+
+        .page-hero * { position: relative; z-index: 1; }
+
+        .page-hero h1 {
+            font-size: clamp(2rem, 5vw, 3.8rem);
+            letter-spacing: 2px;
+            text-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+            margin-bottom: 1rem;
+        }
+
+        .page-hero p {
+            font-family: var(--font-main);
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.5);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-family: var(--font-main);
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        /* MAIN LAYOUT */
+        .page-container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 5rem;
+        }
+
+        /* ARTICLE CARD */
+        .article-section {
+            margin-bottom: 5rem;
+            background: white;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 6px 30px rgba(0,0,0,0.10);
+            border-top: 6px solid var(--gob-red);
+        }
+
+        .article-section:nth-child(2) {
+            border-top-color: var(--gob-gold);
+        }
+
+        /* IMAGE GALLERY */
+        .article-gallery {
+            display: grid;
+            gap: 3px;
+            background: #111;
+        }
+
+        .gallery-2col {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .gallery-3col {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .gallery-featured {
+            grid-template-columns: 2fr 1fr;
+        }
+
+        .gallery-full-2 {
+            grid-template-rows: auto auto;
+        }
+
+        .article-gallery img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .article-gallery img:hover {
+            transform: scale(1.02);
+            z-index: 2;
+            position: relative;
+        }
+
+        .article-gallery .tall {
+            height: 420px;
+        }
+
+        .article-gallery .short {
+            height: 200px;
+        }
+
+        /* ARTICLE CONTENT */
+        .article-body {
+            padding: 2.5rem;
+        }
+
+        .article-tag {
+            display: inline-block;
+            background: var(--gob-red);
+            color: white;
+            font-family: var(--font-main);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 3px 12px;
+            margin-bottom: 1rem;
+        }
+
+        .article-section:nth-child(2) .article-tag {
+            background: var(--gob-gold);
+        }
+
+        .article-body h2 {
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            color: #1a1a1a;
+            line-height: 1.15;
+            margin-bottom: 0.5rem;
+        }
+
+        .article-byline {
+            font-family: var(--font-main);
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .article-body p {
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: #3a3a3a;
+            margin-bottom: 1.2rem;
+        }
+
+        .article-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .article-body strong {
+            color: #111;
+            font-weight: 600;
+        }
+
+        .article-body em {
+            font-style: italic;
+            color: #555;
+        }
+
+        /* HIGHLIGHT BLOCK */
+        .pull-quote {
+            border-left: 4px solid var(--gob-red);
+            background: #fdf5f7;
+            padding: 1.2rem 1.5rem;
+            margin: 1.8rem 0;
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #5a1a2a;
+            line-height: 1.7;
+        }
+
+        .article-section:nth-child(2) .pull-quote {
+            border-left-color: var(--gob-gold);
+            background: #fdf7ed;
+            color: #5a3a00;
+        }
+
+        /* LOCATION LIST */
+        .location-list {
+            background: #f8f8f6;
+            border-radius: 4px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .location-list h4 {
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            color: var(--gob-green);
+            margin-bottom: 0.8rem;
+            font-family: var(--font-main);
+        }
+
+        .location-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .location-list li {
+            padding: 0.3rem 0;
+            font-family: var(--font-main);
+            font-size: 0.95rem;
+            color: #444;
+            border-bottom: 1px dotted #ddd;
+            display: flex;
+            gap: 0.5rem;
+            align-items: flex-start;
+        }
+
+        .location-list li:last-child { border-bottom: none; }
+
+        .loc-icon {
+            color: var(--gob-red);
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .loc-address {
+            font-size: 0.8rem;
+            color: #888;
+            display: block;
+        }
+
+        /* FOOTER NOTE */
+        .article-footnote {
+            font-family: var(--font-main);
+            font-size: 0.8rem;
+            color: #aaa;
+            border-top: 1px solid #e8e8e8;
+            padding-top: 1rem;
+            margin-top: 2rem;
+        }
+
+        .article-footnote a {
+            color: var(--gob-red);
+            text-decoration: underline;
+        }
+
+        /* DIVIDER */
+        .section-divider {
+            text-align: center;
+            margin: 3rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: #ccc;
+            font-family: var(--font-main);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+        .section-divider::before, .section-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #ddd;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #1a1a1a;
+            color: #aaa;
+            text-align: center;
+            padding: 2rem;
+            font-family: var(--font-main);
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--gob-gold);
+            text-decoration: none;
+        }
+
+        footer a:hover { text-decoration: underline; }
+
+        /* RESPONSIVE */
+        @media (max-width: 640px) {
+            .gallery-2col, .gallery-3col, .gallery-featured {
+                grid-template-columns: 1fr;
+            }
+            .article-gallery img, .article-gallery .tall {
+                height: 260px;
+            }
+            nav { gap: 10px; }
+            nav a { padding: 4px 6px; font-size: 0.85rem; }
+        }
+    </style>
+</head>
+
+<body>
+<div id="main-wrapper" style="min-height: 100vh;">
+
+    <header>
+        <div class="logo-container">
+            <img src="IMAGENES_ARTÍCULOS/logo/Untitled Project - Logo 4.png" alt="Jalisco 2026" style="height: 50px; border-radius: 5px; background: white; object-fit: contain;">
+            <div>
+                <div class="site-title">Jalisco 2026</div>
+                <div class="subtitle">La sede más segura del mundo</div>
+            </div>
+        </div>
+        <nav>
+            <a href="perspectiva_genero.html" class="active">Turismo con Perspectiva de Género</a>
+            <a href="https://x.com/YaNiPaper/status/2036831196357796040/photo/1" target="_blank" rel="noopener">Precios</a>
+            <a href="https://bloqueos-zmg.web.app/" target="_blank" rel="noopener">Rutas Seguras</a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="page-hero">
+        <span class="hero-tag">Turismo con perspectiva de género</span>
+        <h1>Jalisco desde otras voces</h1>
+        <p>Espacios, cuerpos y resistencias que el turismo oficial prefiere no mostrarte.</p>
+    </section>
+
+    <main class="page-container">
+
+        <!-- ===================== ARTÍCULO 1 ===================== -->
+        <article class="article-section" id="articulo-espacios">
+
+            <div class="article-gallery gallery-featured">
+                <img src="IMAGENES_ARTÍCULOS/PERSPECTIVA_GENERO/foto1.JPG" alt="Perspectiva de género en Guadalajara" class="tall">
+                <div style="display:grid; gap:3px;">
+                    <img src="IMAGENES_ARTÍCULOS/PERSPECTIVA_GENERO/foto2.JPG" alt="Espacios para mujeres y disidencias" style="height:207px; object-fit:cover; display:block; width:100%;">
+                    <img src="IMAGENES_ARTÍCULOS/PERSPECTIVA_GENERO/foto3.JPG" alt="Espacios seguros Guadalajara" style="height:207px; object-fit:cover; display:block; width:100%;">
+                </div>
+            </div>
+
+            <div class="article-body">
+                <span class="article-tag">Perspectiva de género</span>
+                <h2>Espacios en Guadalajara para Mujeres y Disidencias</h2>
+                <div class="article-byline">Publicado en PIP Digital &nbsp;·&nbsp; Jalisco 2026</div>
+
+                <p>Sabemos que el fútbol es un deporte que pueden disfrutar todas las personas independientemente de su género, por eso nos interesa compartir también espacios y actividades seguras para mujeres y disidencias.</p>
+
+                <p>Empezando con la temática por la que estamos aquí —el Mundial— les tenemos espacios de recreación y deportivos donde pasar el tiempo:</p>
+
+                <div class="location-list">
+                    <h4>🏃 Espacios deportivos</h4>
+                    <ul>
+                        <li>
+                            <span class="loc-icon">▸</span>
+                            <span>
+                                <strong>CODE</strong> — Consejo Estatal para el Fomento Deportivo. Atletismo, voleibol de playa, frontón, esgrima, hockey sobre pasto, boxeo, pesas y natación.
+                                <span class="loc-address">Av. Fray Antonio Alcalde 1360, Alcalde Barranquitas</span>
+                            </span>
+                        </li>
+                        <li>
+                            <span class="loc-icon">▸</span>
+                            <span><strong>Parque Metropolitano</strong></span>
+                        </li>
+                        <li>
+                            <span class="loc-icon">▸</span>
+                            <span><strong>Parque Alcalde</strong></span>
+                        </li>
+                        <li>
+                            <span class="loc-icon">▸</span>
+                            <span><strong>Bosque Los Colomos</strong></span>
+                        </li>
+                        <li>
+                            <span class="loc-icon">▸</span>
+                            <span><strong>Bosque de La Primavera</strong></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="pull-quote">
+                    Aunque cuidado, quién sabe si esos espacios guardan también restos de los secretos que desean ocultar el Estado y otras instituciones de poder…
+                </div>
+
+                <p>Guadalajara es una de las ciudades principales del país en tema de arte, por lo que en su visita no deben quedar fuera:</p>
+
+                <div class="location-list">
+                    <h4>🎨 Cultura y Arte</h4>
+                    <ul>
+                        <li>
+                            <span class="loc-icon">▸</span>
+                            <span>
+                                <strong>MUSA</strong>
+                                <span class="loc-address">Av. Juárez 975</span>
+                            </span>
+                        </li>
+                        <li>
+                            <span class="loc-icon">▸</span>
+                            <span>
+                                <strong>Museo Cabañas</strong>
+                                <span class="loc-address">Plaza Tapatía</span>
+                            </span>
+                        </li>
+                        <li>
+                            <span class="loc-icon">▸</span>
+                            <span>
+                                <strong>Museo Regional</strong>
+                                <span class="loc-address">Liceo 60 colonia Centro</span>
+                            </span>
+                        </li>
+                        <li>
+                            <span class="loc-icon">▸</span>
+                            <span>
+                                <strong>MURA — Museo Raúl Anguiano</strong>
+                                <span class="loc-address">Av. Mariano Otero 375</span>
+                            </span>
+                        </li>
+                        <li>
+                            <span class="loc-icon">▸</span>
+                            <span>
+                                <strong>Museo de la Memoria LGBTIQ+</strong>
+                                <span class="loc-address">Av. 8 de Julio núm. 76, colonia Centro</span>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="pull-quote">
+                    Pero no se sorprendan si somos lxs musxs y no lxs artistas en sus paredes. Tampoco se dejen engañar con las calles pintadas de arcoíris o los locales llenos de banderas. Recuerden que mientras nos desaparecen y nos matan el Estado no hace nada.
+                </div>
+
+                <p>Para finalizar, nos encantaría invitarles a recordar que el suelo por donde caminan era habitado por miles que nos arrebataron y los rostros que pueblan las paredes son a quienes aún seguimos buscando.</p>
+
+                <p>No importa si vienes solx o en familia, todxs son bienvenidxs.</p>
+            </div>
+        </article>
+
+        <div class="section-divider">· · ·</div>
+
+        <!-- ===================== ARTÍCULO 2 ===================== -->
+        <article class="article-section" id="articulo-8m">
+
+            <div class="article-gallery gallery-2col">
+                <img src="IMAGENES_ARTÍCULOS/PERSPECTIVA_GENERO/foto4.JPG" alt="Marcha 8M Guadalajara 2026">
+                <img src="IMAGENES_ARTÍCULOS/PERSPECTIVA_GENERO/foto5.JPG" alt="Mujeres marchando el 8M">
+            </div>
+
+            <div class="article-body">
+                <span class="article-tag">Perspectiva de género</span>
+                <h2>¿Cómo se gozó el 8M en Guadalajara?</h2>
+                <div class="article-byline">
+                    Texto original por <strong>Karen García</strong> &nbsp;·&nbsp; Editado por <strong>Frey Munguia</strong>
+                </div>
+
+                <p>En Guadalajara, el 8M se conmemoró con mujeres, niñas y adolescentes marchando desde el Parque Morelos hasta llegar al Andador Palestina, en el que diversas emociones coexistieron: desde la rabia, la tristeza y la impotencia, hasta la esperanza, la sororidad, el gozo y la alegría.</p>
+
+                <p>La marcha se convirtió en un espacio de protesta y de disfrute con la batukada feminista que ambientó e hizo bailar a las manifestantes, así como los performance que llenaron el espacio de denuncia o las consignas que hicieron brincar a las que no <em>"querían ser machos"</em>. Por momentos las mujeres también se despojaron de la rabia y disfrutaron con sus amigas, hermanas, mamás e hijas, la lucha por una vida digna.</p>
+
+                <p>Para nuestro artículo, diversas mujeres expresaron el porqué marcharon este día.</p>
+
+                <div class="pull-quote">
+                    «Soy mujer, soy persona, soy hija, soy abuela, soy madre, no soy una carpeta de investigación.»
+                    <br><em style="font-size:0.85rem; opacity:0.8;">— Estefanía Guadalupe Abarca Valdez</em>
+                </div>
+
+                <p><strong>Estefanía Guadalupe Abarca Valdez</strong> es una artista que cada año muestra su arte mediante su cuerpo en la marcha del 8M. Este año marchó vestida de catrina, con un velo negro adornado con fotos de mujeres desaparecidas y que han sido víctimas de feminicidio.</p>
+
+                <p><strong>Elda Adriana Valdez Montoya</strong> llegó al contingente de Niñez y Carriolas junto a su hijo, quien iba vestido de forma peculiar —traía una botarga de rana que llamaba la atención y le sacaba sonrisas a todas las personas presentes.</p>
+
+                <div class="pull-quote">
+                    «Hoy me manifiesto por todas las mujeres que han sido silenciadas y porque estoy enseñando a mi hijo que debe apoyarlas.»
+                    <br><em style="font-size:0.85rem; opacity:0.8;">— Elda Adriana Valdez Montoya</em>
+                </div>
+
+                <p><strong>Edna Minerva Segura Macías</strong> marchó junto a sus hijas este año, quienes emocionadas la grababan y la acompañaban a brincar al ritmo de la consigna <em>"el que no brinque es macho"</em>. <em>«¡Ay!, me siento muy orgullosa de estar aquí representando a mis hijas»</em>, expresó con una sonrisa en la cara.</p>
+
+                <p><strong>Marisol Nayheli Fernandez López</strong> es una maestra originaria de Ecatepec, quien se mudó a Guadalajara para continuar sus estudios en docencia. En sus manos cargaba un cartel que decía: <em>«Las foráneas existimos porque resistimos»</em>.</p>
+
+                <div class="pull-quote">
+                    «Las mujeres foráneas somos más segregadas. Sin oportunidades en nuestros Estados, salimos en busca de algo mejor pero solemos terminar también en las periferias de donde nos asentamos.»
+                    <br><em style="font-size:0.85rem; opacity:0.8;">— Marisol Nayheli Fernandez López</em>
+                </div>
+
+                <p><strong>Erika Mejía Vergara</strong> y <strong>Angélica Jazmín Ortega Medina</strong> son amigas que marcharon juntas por la emancipación de las mujeres y personas obreras. Lo que les emocionó este año fue crear comunidad en un lugar en el que convergen distintas luchas.</p>
+
+                <p>Finalmente, las mujeres llegaron al Andador Palestina, en el que les esperaba un escenario con música variada que encendió el ambiente para bailar. Amigas se abrazaron, compartieron comida y bebida, gozaron y conmemoraron una lucha que no termina, a sabiendas que en comunidad la resistencia y la rabia se sostienen.</p>
+
+                <div class="pull-quote">
+                    Al menos esta es la historia que contaríamos si todas esas mujeres no hubieran sido desaparecidas. Recordemos sus nombres, recordemos sus rostros y gritemos también por ellas. Hasta encontrarles.
+                </div>
+
+                <div class="article-footnote">
+                    * Texto original: García, K. (2026, 8 marzo). <em>Juntas contra el Despojo: ¿Cómo se gozó el 8M en Guadalajara?</em> Zona Docs.
+                    <a href="https://www.zonadocs.mx/2026/03/08/juntas-contra-el-despojo-como-se-gozo-el-8m-en-guadalajara/" target="_blank" rel="noopener">
+                        zonadocs.mx
+                    </a>
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p><a href="index.html">← Volver al inicio</a> &nbsp;·&nbsp; Jalisco 2026 &nbsp;·&nbsp; Todos los derechos reservados</p>
+    </footer>
+
+</div>
+<script src="rostros.js"></script>
+<script src="trap.js"></script>
+</body>
+</html>

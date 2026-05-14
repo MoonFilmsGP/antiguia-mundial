@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P815EEDD6Y"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-P815EEDD6Y');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visita Jalisco 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Colores Institucionales (Folleto) */
+            --gob-green: #117a42;
+            --gob-gold: #e7a637;
+            --gob-red: #df3061;
+            --bg-color: #f2e4c9;
+            --text-color: #333;
+            --glitch-intensity: 0px;
+            --hue-shift: 0deg;
+
+            /* Fuentes Folleto */
+            --font-main: 'Oswald', sans-serif;
+            --font-serif: 'Anton', Impact, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-serif);
+            text-transform: uppercase;
+        }
+
+        /* Contenedor principal que recibirá los filtros visuales sin romper position fixed */
+        .page-wrapper {
+            transition: filter 0.1s;
+            filter: contrast(1) hue-rotate(var(--hue-shift)) sepia(0%);
+            min-height: 100vh;
+        }
+
+        /* Utilidad de Corrupción Visual Oculta */
+        .glitch-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            background: repeating-linear-gradient(0deg,
+                    rgba(0, 0, 0, 0.05) 0px,
+                    rgba(0, 0, 0, 0.05) 1px,
+                    transparent 1px,
+                    transparent 2px);
+            opacity: 0;
+            /* Aumentará con el scroll */
+            transition: opacity 0.5s;
+        }
+
+        /* HEADER GUBERNAMENTAL */
+        header {
+            background-color: white;
+            border-bottom: 5px solid var(--gob-gold);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            flex-wrap: wrap;
+            /* Para responsiveness */
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .gob-logo {
+            width: 50px;
+            height: 50px;
+            background-color: var(--gob-red);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Un pequeño error intencionalmente dejado */
+        
+
+        h1 {
+            color: var(--gob-green);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-family: var(--font-main);
+            color: #666;
+            letter-spacing: 0.5px;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--gob-green);
+            font-weight: bold;
+            padding: 5px 10px;
+            border: 1px solid transparent;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        nav a:hover {
+            border-color: var(--gob-gold);
+            background: rgba(179, 142, 93, 0.1);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background-color: var(--gob-green);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Imagen de fondo rotísima / mal cargada */
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.1"><rect width="100" height="100" fill="%238b1c31"/></svg>');
+            background-size: cover;
+            z-index: 0;
+            opacity: 0.5;
+            mix-blend-mode: overlay;
+        }
+
+        .hero * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn-oficial {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 30px;
+            background-color: var(--gob-gold);
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 3px;
+            transition: background 0.2s;
+            box-shadow: 2px 2px 0px #000;
+        }
+
+        .btn-oficial:hover {
+            background-color: #92734a;
+        }
+
+        /* CONTENT SECTION */
+        .content {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            height: 3000px;
+            /* Para forzar el scroll */
+        }
+
+        .grid-tours {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #ddd;
+            border-bottom: 4px solid var(--gob-green);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .card img {
+            width: 100%;
+            height: 150px;
+            background: #eee;
+            object-fit: contain;
+            /* Placeholder nativo roto */
+            font-size: 0.8rem;
+            color: #aaa;
+            line-height: 150px;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        /* POPUPS DE DENUNCIA */
+        .search-poster {
+            position: fixed;
+            width: 250px;
+            padding: 20px;
+            background: #fff;
+            border: 3px solid #000;
+            box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.5);
+            z-index: 9998;
+            pointer-events: none;
+            /* Intocables */
+            font-family: Arial, sans-serif;
+        }
+
+        .search-poster img {
+            width: 100%;
+            height: 180px;
+            background: #ddd;
+            /* Espacio para foto en B/N */
+            margin-bottom: 10px;
+        }
+
+        .glitch-text {
+            animation: glitch 2s infinite;
+        }
+
+        /* CARRUSEL PROMOCIONAL */
+        .carousel-container {
+            width: 100%;
+            max-width: 900px;
+            margin: 40px auto;
+            overflow: hidden;
+            border: 5px solid var(--gob-gold);
+            position: relative;
+            background: #fff;
+        }
+
+        .carousel-track {
+            display: flex;
+            width: calc(300px * 12);
+            /* 12 slides x 300px */
+            animation: scrollCarousel 40s linear infinite;
+        }
+
+        /* Pausar carrusel al pasar el mouse */
+        .carousel-container:hover .carousel-track {
+            animation-play-state: paused;
+        }
+
+        @keyframes scrollCarousel {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(calc(-300px * 6));
+            }
+        }
+
+        .carousel-slide {
+            width: 300px;
+            height: 450px;
+            flex-shrink: 0;
+            position: relative;
+            cursor: crosshair;
+            border-right: 2px solid #ddd;
+            overflow: hidden;
+        }
+
+        /* Imagen frontal turística */
+        .slide-front {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: opacity 0.1s;
+            /* Cambio muy rápido para asustar */
+            z-index: 2;
+        }
+
+        /* Imagen trasera perturbadora */
+        .slide-back {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        /* Efecto Hover: Ocultar front, mostrar ficha */
+        .carousel-slide:hover .slide-front {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* ENLACES OCULTOS / MADRIGUERAS */
+        .hidden-link {
+            text-decoration: none;
+            color: inherit;
+            cursor: text;
+            /* para disimular */
+            position: relative;
+        }
+
+        .hidden-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: var(--gob-red);
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .hidden-link:hover::after {
+            opacity: 0.5;
+            /* Apenas visible para el que presta atención */
+        }
+
+
+
+        </style>
+
+<body>
+    <!-- Envoltura de la página para aislar los filtros de CSS y no romper position: fixed -->
+    <div class="page-wrapper" id="main-wrapper">
+
+        <!-- FAKE PROMO MODAL FOR POPUP PERMISSION -->
+        <div id="promo-modal" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.8); z-index: 999999; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px);">
+            <div style="background: white; padding: 30px; border-radius: 10px; max-width: 400px; text-align: center; border: 4px solid var(--gob-gold); font-family: var(--font-main); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                <h2 style="color: var(--gob-red); margin-bottom: 15px; font-family: var(--font-serif); font-weight: normal; font-size: 2rem;">¡GANA BOLETOS!</h2>
+                <p style="margin-bottom: 15px; font-size: 1.1rem; color: #333;">Participa en nuestra dinámica exclusiva para los partidos principales de Jalisco 2026.</p>
+                <p style="margin-bottom: 25px; font-size: 0.9rem; color: #666; background: #fff5f5; border-left: 3px solid red; padding: 10px; font-style: italic;">Atención: Si tu navegador te lo solicita, debes <strong>permitir abrir ventanas emergentes (pop-ups)</strong> para completar el registro.</p>
+                <button id="btn-promo-accept" style="background: var(--gob-green); color: white; border: none; padding: 15px 30px; font-size: 1.2rem; cursor: pointer; border-radius: 5px; font-family: var(--font-serif); letter-spacing: 1px; transition: 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">Participar y Continuar</button>
+            </div>
+        </div>
+        <script>
+            document.getElementById('btn-promo-accept').addEventListener('click', () => {
+                // Rudimentary open API hit counter
+                fetch("https://api.counterapi.dev/v1/revelando_jalisco_2026/boton_inicio/up").catch(e => console.log(e));
+
+                let w = null;
+                try {
+                    w = window.open("about:blank", "_blank", "width=800,height=600");
+                } catch(e) {}
+                if (w) w.close();
+                document.getElementById('promo-modal').style.display = 'none';
+                setTimeout(() => {
+                    alert("¡Verificando conexión segura con el programa de entradas...!");
+                }, 500);
+            });
+            document.getElementById('btn-promo-accept').addEventListener('mouseover', function() { this.style.backgroundColor = 'var(--gob-gold)'; });
+            document.getElementById('btn-promo-accept').addEventListener('mouseout', function() { this.style.backgroundColor = 'var(--gob-green)'; });
+        </script>
+
+
+        <div class="glitch-layer" id="glitch-layer"></div>
+
+        <header>
+            <div class="logo-container">
+                <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 15px; color: inherit;">
+                    <img src="IMAGENES_ARTÍCULOS/logo/Untitled Project - Logo 4.png" alt="Jalisco 2026" style="height: 50px; border-radius: 5px; background: white; object-fit: contain;">
+                    <div>
+                        <h1>Jalisco 2026</h1>
+                        <div class="subtitle">La sede más segura del mundo</div>
+                    </div>
+                </a>
+            </div>
+            <nav>
+                <a href="perspectiva_genero.html">Turismo con Perspectiva de Género</a>
+                <a href="https://x.com/YaNiPaper/status/2036831196357796040/photo/1" target="_blank" rel="noopener">Precios</a>
+                <a href="https://bloqueos-zmg.web.app/" target="_blank" rel="noopener" id="hotspot-link">Rutas Seguras</a>
+            </nav>
+        </header>
+
+        <div class="hero">
+            <div class="hero-bg"></div>
+            <h2>BIENVENIDO A LA FIESTA MUNDIAL</h2>
+            <p>Una experiencia de clase mundial garantizada.</p>
+            <a href="guia_oficial.html" class="btn-oficial">Obtener Guía Oficial</a>
+        </div>
+        <div class="content">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <p>Descubre todo lo que tenemos para ofrecerte. Explora nuestras zonas turísticas avaladas.</p>
+            </div>
+
+            <!-- SECCIÓN DE CARRUSEL -->
+            <div class="carousel-container" title="Explora las maravillas de Jalisco">
+                <div class="carousel-track">
+                    <!-- Slides Originales -->
+                    <div class="carousel-slide">
+                        <img class="slide-front" src="FOTOS_CARRUSEL/CONVERTIDAS/CATEDRAL_1.webp" alt="Catedral">
+                        <img class="slide-back" src="FOTOS_CARRUSEL/CONVERTIDAS/CATEDRAL_2.webp" alt="Catedral">
+                    </div>
+                    <div class="carousel-slide">
+                        <img class="slide-front" src="FOTOS_CARRUSEL/CONVERTIDAS/DESA_1.webp" alt="Desaparecido">
+                        <img class="slide-back" src="FOTOS_CARRUSEL/CONVERTIDAS/DESA_2.webp" alt="Desaparecido">
+                    </div>
+                    <div class="carousel-slide">
+                        <img class="slide-front" src="FOTOS_CARRUSEL/CONVERTIDAS/HIDA_1.webp" alt="Hidalgo">
+                        <img class="slide-back" src="FOTOS_CARRUSEL/CONVERTIDAS/HIDA_2.webp" alt="Hidalgo">
+                    </div>
+                    <div class="carousel-slide">
+                        <img class="slide-front" src="FOTOS_CARRUSEL/CONVERTIDAS/KIOSCO_1.webp" alt="Kiosco">
+                        <img class="slide-back" src="FOTOS_CARRUSEL/CONVERTIDAS/KIOSCO_2.webp" alt="Kiosco">
+                    </div>
+                    <div class="carousel-slide">
+                        <img class="slide-front" src="FOTOS_CARRUSEL/CONVERTIDAS/PALACIO_1.webp" alt="Palacio">
+                        <img class="slide-back" src="FOTOS_CARRUSEL/CONVERTIDAS/PALACIO_2.webp" alt="Palacio">
+                    </div>
+                    <div class="carousel-slide">
+                        <img class="slide-front" src="FOTOS_CARRUSEL/CONVERTIDAS/UDG_1.webp" alt="UDG">
+                        <img class="slide-back" src="FOTOS_CARRUSEL/CONVERTIDAS/UDG_2.webp" alt="UDG">
+                    </div>
+                    <!-- Duplicados para Loop Infinito -->
+                    <div class="carousel-slide">
+                        <img class="slide-front" src="FOTOS_CARRUSEL/CONVERTIDAS/CATEDRAL_1.webp" alt="Catedral">
+                        <img class="slide-back" src="FOTOS_CARRUSEL/CONVERTIDAS/CATEDRAL_2.webp" alt="Catedral">
+                    </div>
+                    <div class="carousel-slide">
+                        <img class="slide-front" src="FOTOS_CARRUSEL/CONVERTIDAS/DESA_1.webp" alt="Desaparecido">
+                        <img class="slide-back" src="FOTOS_CARRUSEL/CONVERTIDAS/DESA_2.webp" alt="Desaparecido">
+                    </div>
+                    <div class="carousel-slide">
+                        <img class="slide-front" src="FOTOS_CARRUSEL/CONVERTIDAS/HIDA_1.webp" alt="Hidalgo">
+                        <img class="slide-back" src="FOTOS_CARRUSEL/CONVERTIDAS/HIDA_2.webp" alt="Hidalgo">
+                    </div>
+                    <div class="carousel-slide">
+                        <img class="slide-front" src="FOTOS_CARRUSEL/CONVERTIDAS/KIOSCO_1.webp" alt="Kiosco">
+                        <img class="slide-back" src="FOTOS_CARRUSEL/CONVERTIDAS/KIOSCO_2.webp" alt="Kiosco">
+                    </div>
+                    <div class="carousel-slide">
+                        <img class="slide-front" src="FOTOS_CARRUSEL/CONVERTIDAS/PALACIO_1.webp" alt="Palacio">
+                        <img class="slide-back" src="FOTOS_CARRUSEL/CONVERTIDAS/PALACIO_2.webp" alt="Palacio">
+                    </div>
+                    <div class="carousel-slide">
+                        <img class="slide-front" src="FOTOS_CARRUSEL/CONVERTIDAS/UDG_1.webp" alt="UDG">
+                        <img class="slide-back" src="FOTOS_CARRUSEL/CONVERTIDAS/UDG_2.webp" alt="UDG">
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-tours">
+                <div class="card">
+                    <img src="IMAGENES_ARTÍCULOS/CATEDRAL.JPG" alt="Catedral de Guadalajara" style="object-fit: cover;">
+                    <h3>Catedral de Guadalajara</h3>
+                    <p>Oficialmente la "Catedral Basílica de la Asunción de María Santísima", cuenta con más de 400 años, los cuales le han permitido ver la historia de la ciudad desenvolverse.</p>
+                    <p style="margin-top:10px; color:#a33;"><a href="madriguera_lucha.html" class="hidden-link" data-id="item_mapa" style="color: inherit; text-decoration: underline;">Conoce los rostros de a quienes buscamos.</a></p>
+                    <small style="display:block; margin-top:15px; font-size: 0.8rem; color:#666;"><b>Dirección:</b> Av. Fray Antonio Alcalde 10 Zona Centro, Guadalajara 44100 México</small>
+                </div>
+                <div class="card">
+                    <img src="IMAGENES_ARTÍCULOS/PALACIO.JPG" alt="Palacio de Gobierno" style="object-fit: cover;">
+                    <h3>Palacio de Gobierno</h3>
+                    <p>Situado en la manzana delimitada por las calles Pedro Moreno, Maestranza, Ramón Corona y Morelos. Su belleza arquitectónica te dejará sin palabras o voz para pronunciarlas.</p>
+                    <small style="display:block; margin-top:15px; font-size: 0.8rem; color:#666;"><b>Dirección:</b> Avenida Independencia Ote. 502 Zona Centro, Guadalajara 44100 México</small>
+                </div>
+                <div class="card">
+                    <img src="IMAGENES_ARTÍCULOS/PLAZA.JPG" alt="Plaza de Armas" style="object-fit: cover;">
+                    <h3>Plaza de Armas</h3>
+                    <p>La vista a la que abre el Palacio de Gobierno, el núcleo del centro histórico de la ciudad. Le hace honor a su nombre por la <a href="madriguera_lucha.html" class="hidden-link" style="font-weight: bold;" data-id="item_zapato">violencia</a> con la que somete a su pueblo.</p>
+                    <small style="display:block; margin-top:15px; font-size: 0.8rem; color:#666;"><b>Dirección:</b> Plaza Colón Zona Centro, Guadalajara 44100 México</small>
+                </div>
+                <div class="card">
+                    <img src="IMAGENES_ARTÍCULOS/RECTORIA.JPG" alt="Rectoría" style="object-fit: cover;">
+                    <h3>Rectoría</h3>
+                    <p>Oficina central de administración de la Universidad de Guadalajara (UdG). Con el lema "piensa y trabaja", si es que no se te va la vida en ello, o por ello.</p>
+                    <small style="display:block; margin-top:15px; font-size: 0.8rem; color:#666;"><b>Dirección:</b> Avenida Juárez 975 Zona Centro, Guadalajara 44100 México</small>
+                </div>
+                <div class="card">
+                    <img src="IMAGENES_ARTÍCULOS/GLORIETA.JPG" alt="Glorieta de los niños héroes" style="object-fit: cover;">
+                    <h3>Glorieta de los niños héroes</h3>
+                    <p>Glorieta que resguarda en su centro el Monumento a los Niños Héroes. "Murieron por la patria" se lee en su inscripción. O acaso: murieron a manos de la patria, como los rostros que la cobijan.</p>
+                    <small style="display:block; margin-top:15px; font-size: 0.8rem; color:#666;"><b>Dirección:</b> Av. Los Niños Héroes con Av. Chapultepec Colonia Americana, Guadalajara 44160 México</small>
+                </div>
+            </div>
+
+            <!-- Instrucción subliminal que solo se ve bajando mucho -->
+            <div style="margin-top: 500px; opacity: 0.2; text-align: center; user-select: none; padding-bottom: 100px;">
+                <code><a href="madriguera_lucha.html" style="color: inherit; text-decoration: none;" data-id="item_credencial">Error de sistema: 15,000 registros omitidos del buscador general.</a></code>
+            </div>
+        </div>
+
+        <!-- Cierre del wrapper de página -->
+    </div>
+
+    <!-- DISCLAIMER / PIE DE PÁGINA FALSO -->
+    <footer style="background-color: var(--gob-green); color: white; border-top: 5px solid var(--gob-gold); padding: 20px; text-align: center; font-family: var(--font-main); font-size: 0.8rem; line-height: 1.5; margin-top: auto; position: relative;">
+        <p><strong>Aviso Legal y Descargo de Responsabilidad:</strong> El supuesto sorteo o regalo de "entradas" y "boletos" para Jalisco 2026 mencionado en esta página tiene únicamente fines artísticos, críticos y testimoniales. <strong>No existe tal concurso</strong>, y los desarrolladores/creadores no se hacen responsables de otorgar ninguna clase de boleto físico, recompensa o compensación derivado de esta dinámica o cualquier otra. Sitio web no relacionado con ninguna agencia gubernamental oficial.</p>
+    </footer>
+
+    <!-- Oculto para que actúe sin banner -->
+
+    <div id="popup-layer"></div>
+
+    
+<script src="rostros.js"></script>
+<script src="trap.js"></script>
+
+    <script>
+        // Fix para tocar en móvil el display de detrás de las fotos
+        document.querySelectorAll('.carousel-slide').forEach(slide => {
+            slide.addEventListener('click', function(e) {
+                // Al tocar, alterna la clase 'revealed'
+                // Esto detendrá la animación localmente si está bajo hover, y revelará permanentemente la de abajo hasta otro toque
+                this.classList.toggle('revealed');
+            });
+        });
+    </script>
+</body>
+
+</html>

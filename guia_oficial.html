@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P815EEDD6Y"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-P815EEDD6Y');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Oficial | Visita Jalisco 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gob-green: #117a42;
+            --gob-gold: #e7a637;
+            --gob-red: #df3061;
+            --bg-color: #f2e4c9;
+            --text-color: #333;
+            --font-main: 'Oswald', sans-serif;
+            --font-serif: 'Anton', Impact, sans-serif;
+            --font-body: 'Lora', Georgia, serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-serif);
+            text-transform: uppercase;
+        }
+
+        /* HEADER */
+        header {
+            background-color: white;
+            border-bottom: 5px solid var(--gob-gold);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            flex-wrap: wrap;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .gob-logo {
+            width: 50px;
+            height: 50px;
+            background-color: var(--gob-red);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        .site-title {
+            color: var(--gob-green);
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-family: var(--font-main);
+            color: #666;
+            letter-spacing: 0.5px;
+            font-size: 0.85rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--gob-green);
+            font-family: var(--font-main);
+            font-weight: bold;
+            padding: 5px 10px;
+            border: 1px solid transparent;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            border-color: var(--gob-gold);
+            background: rgba(179,142,93,0.1);
+        }
+
+        nav a.active {
+            border-color: var(--gob-green);
+            background: rgba(17,122,66,0.08);
+        }
+
+        /* HERO BANNER */
+        .page-hero {
+            background: linear-gradient(135deg, #7b1f4b 0%, #df3061 40%, #e7a637 100%);
+            color: white;
+            padding: 5rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 20px,
+                rgba(255,255,255,0.04) 20px,
+                rgba(255,255,255,0.04) 40px
+            );
+        }
+
+        .page-hero * { position: relative; z-index: 1; }
+
+        .page-hero h1 {
+            font-size: clamp(2rem, 5vw, 3.8rem);
+            letter-spacing: 2px;
+            text-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+            margin-bottom: 1rem;
+        }
+
+        .page-hero p {
+            font-family: var(--font-main);
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.5);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-family: var(--font-main);
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        /* MAIN LAYOUT */
+        .page-container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 5rem;
+        }
+
+        /* ARTICLE CARD */
+        .article-section {
+            margin-bottom: 5rem;
+            background: white;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 6px 30px rgba(0,0,0,0.10);
+            border-top: 6px solid var(--gob-red);
+        }
+
+        .article-section:nth-child(2) {
+            border-top-color: var(--gob-gold);
+        }
+
+        /* IMAGE GALLERY */
+        .article-gallery {
+            display: grid;
+            gap: 3px;
+            background: #111;
+        }
+
+        .gallery-2col {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .gallery-3col {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .gallery-featured {
+            grid-template-columns: 2fr 1fr;
+        }
+
+        .gallery-full-2 {
+            grid-template-rows: auto auto;
+        }
+
+        .article-gallery img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .article-gallery img:hover {
+            transform: scale(1.02);
+            z-index: 2;
+            position: relative;
+        }
+
+        .article-gallery .tall {
+            height: 420px;
+        }
+
+        .article-gallery .short {
+            height: 200px;
+        }
+
+        /* ARTICLE CONTENT */
+        .article-body {
+            padding: 2.5rem;
+        }
+
+        .article-tag {
+            display: inline-block;
+            background: var(--gob-red);
+            color: white;
+            font-family: var(--font-main);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 3px 12px;
+            margin-bottom: 1rem;
+        }
+
+        .article-section:nth-child(2) .article-tag {
+            background: var(--gob-gold);
+        }
+
+        .article-body h2 {
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            color: #1a1a1a;
+            line-height: 1.15;
+            margin-bottom: 0.5rem;
+        }
+
+        .article-byline {
+            font-family: var(--font-main);
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .article-body p {
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: #3a3a3a;
+            margin-bottom: 1.2rem;
+        }
+
+        .article-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .article-body strong {
+            color: #111;
+            font-weight: 600;
+        }
+
+        .article-body em {
+            font-style: italic;
+            color: #555;
+        }
+
+        /* HIGHLIGHT BLOCK */
+        .pull-quote {
+            border-left: 4px solid var(--gob-red);
+            background: #fdf5f7;
+            padding: 1.2rem 1.5rem;
+            margin: 1.8rem 0;
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #5a1a2a;
+            line-height: 1.7;
+        }
+
+        .article-section:nth-child(2) .pull-quote {
+            border-left-color: var(--gob-gold);
+            background: #fdf7ed;
+            color: #5a3a00;
+        }
+
+        /* LOCATION LIST */
+        .location-list {
+            background: #f8f8f6;
+            border-radius: 4px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .location-list h4 {
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            color: var(--gob-green);
+            margin-bottom: 0.8rem;
+            font-family: var(--font-main);
+        }
+
+        .location-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .location-list li {
+            padding: 0.3rem 0;
+            font-family: var(--font-main);
+            font-size: 0.95rem;
+            color: #444;
+            border-bottom: 1px dotted #ddd;
+            display: flex;
+            gap: 0.5rem;
+            align-items: flex-start;
+        }
+
+        .location-list li:last-child { border-bottom: none; }
+
+        .loc-icon {
+            color: var(--gob-red);
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .loc-address {
+            font-size: 0.8rem;
+            color: #888;
+            display: block;
+        }
+
+        /* FOOTER NOTE */
+        .article-footnote {
+            font-family: var(--font-main);
+            font-size: 0.8rem;
+            color: #aaa;
+            border-top: 1px solid #e8e8e8;
+            padding-top: 1rem;
+            margin-top: 2rem;
+        }
+
+        .article-footnote a {
+            color: var(--gob-red);
+            text-decoration: underline;
+        }
+
+        /* DIVIDER */
+        .section-divider {
+            text-align: center;
+            margin: 3rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: #ccc;
+            font-family: var(--font-main);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+        .section-divider::before, .section-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #ddd;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #1a1a1a;
+            color: #aaa;
+            text-align: center;
+            padding: 2rem;
+            font-family: var(--font-main);
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--gob-gold);
+            text-decoration: none;
+        }
+
+        footer a:hover { text-decoration: underline; }
+
+        /* RESPONSIVE */
+        @media (max-width: 640px) {
+            .gallery-2col, .gallery-3col, .gallery-featured {
+                grid-template-columns: 1fr;
+            }
+            .article-gallery img, .article-gallery .tall {
+                height: 260px;
+            }
+            nav { gap: 10px; }
+            nav a { padding: 4px 6px; font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+<div id="main-wrapper" style="min-height: 100vh;">
+
+    <header>
+        <div class="logo-container">
+            <img src="IMAGENES_ARTÍCULOS/logo/Untitled Project - Logo 4.png" alt="Jalisco 2026" style="height: 50px; border-radius: 5px; background: white; object-fit: contain;">
+            <div>
+                <div class="site-title">Jalisco 2026</div>
+                <div class="subtitle">La sede más segura del mundo</div>
+            </div>
+        </div>
+        <nav>
+            <a href="perspectiva_genero.html">Turismo con Perspectiva de Género</a>
+            <a href="https://x.com/YaNiPaper/status/2036831196357796040/photo/1" target="_blank" rel="noopener">Precios</a>
+            <a href="https://bloqueos-zmg.web.app/" target="_blank" rel="noopener">Rutas Seguras</a>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <span class="hero-tag">Guía Oficial</span>
+        <h1>Vísperas del mundial</h1>
+        <p>Una blanqueadita a la verdad.</p>
+    </section>
+
+    <main class="page-container">
+        <article class="article-section" id="articulo-guia">
+            
+            <div class="article-gallery gallery-3col">
+                <img src="IMAGENES_ARTÍCULOS/GUIA_OFICIAL_IMG/1.webp" alt="Guia Oficial">
+                <img src="IMAGENES_ARTÍCULOS/GUIA_OFICIAL_IMG/2.webp" alt="Guia Oficial">
+                <img src="IMAGENES_ARTÍCULOS/GUIA_OFICIAL_IMG/3.webp" alt="Guia Oficial">
+                <img src="IMAGENES_ARTÍCULOS/GUIA_OFICIAL_IMG/4.webp" alt="Guia Oficial">
+                <img src="IMAGENES_ARTÍCULOS/GUIA_OFICIAL_IMG/5.webp" alt="Guia Oficial">
+                <img src="IMAGENES_ARTÍCULOS/GUIA_OFICIAL_IMG/6.webp" alt="Guia Oficial">
+                <img src="IMAGENES_ARTÍCULOS/GUIA_OFICIAL_IMG/7.webp" alt="Guia Oficial">
+                <img src="IMAGENES_ARTÍCULOS/GUIA_OFICIAL_IMG/8.webp" alt="Guia Oficial">
+                <img src="IMAGENES_ARTÍCULOS/GUIA_OFICIAL_IMG/9.webp" alt="Guia Oficial">
+            </div>
+
+            <div class="article-body">
+                <span class="article-tag">Sátira</span>
+                <h2>¡Nos encontramos con un milagro único!</h2>
+                
+                <p>Las calles, banquetas y estructuras se han limpiado, hasta estrenado. El gobierno sugiere a la población oponerse contra todo aquello que profane la imagen de la ciudad anunciando que “es por su bien”. Claro, la sociedad juega su papel: anhela pero convenientemente olvida cuando no se trata del balón. Las desapariciones, el “jaliscazo” y las tragedias solo existen en nuestra imaginación.</p>
+
+                <p>Sobreviven gracias al sueño que les venden $1.50 más caro, igual que su transporte, pues amablemente les subsidiaron 3 pesos. Al mismo tiempo, limpian sus penas con el agua bendita de caca que llega por sus tuberías viejas y sin mantenimiento porque ¡claro que no pasa nada! Ninguna enfermedad les alcanza si tienen el partido en su cancha.</p>
+
+                <p>Esperan con ansias los juegos que les dejaron sin presupuesto, salud, transporte o seguridad. Por eso siempre es mejor darle una blanqueadita a la verdad.</p>
+
+                <br><br>
+                <div class="article-gallery" style="grid-template-columns: 1fr;">
+                    <img src="IMAGENES_ARTÍCULOS/GUIA_OFICIAL_IMG/15.webp" alt="Guia Oficial Extra" style="width: 100%; height: auto;">
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p><a href="index.html">← Volver al inicio</a> &nbsp;·&nbsp; Jalisco 2026 &nbsp;·&nbsp; Todos los derechos reservados</p>
+    </footer>
+
+</div>
+<script src="rostros.js"></script>
+<script src="trap.js"></script>
+</body>
+</html>

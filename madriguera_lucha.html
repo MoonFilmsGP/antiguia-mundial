@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P815EEDD6Y"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-P815EEDD6Y');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Lucha y Los Que Cuidan</title>
+    <style>
+        body {
+            background-color: #111;
+            color: #ccc;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-image: linear-gradient(to bottom, #111 0%, #050505 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 50px 20px;
+            position: relative;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #fff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 300;
+            border-bottom: 1px solid #333;
+            padding-bottom: 20px;
+            display: inline-block;
+        }
+
+        /* Eje 1: La Lucha (Archivos/Carpetas acumuladas) */
+        .archivo-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-bottom: 80px;
+        }
+
+        .expediente {
+            width: 280px;
+            height: 350px;
+            background-color: #d1c8b4;
+            color: #111;
+            padding: 20px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.8);
+            position: relative;
+            transform: rotate(calc(-3deg + 6deg * var(--rand)));
+            transition: transform 0.3s ease;
+        }
+
+        .expediente:hover {
+            transform: scale(1.05) rotate(0deg);
+            z-index: 10;
+        }
+
+        .expediente-img {
+            width: 100%;
+            height: 150px;
+            background: #555;
+            margin-bottom: 15px;
+            filter: grayscale(100%);
+            object-fit: cover;
+        }
+
+        .sello-ignorado {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-15deg);
+            color: rgba(139, 28, 49, 0.4);
+            font-size: 2rem;
+            font-weight: bold;
+            border: 3px solid rgba(139, 28, 49, 0.4);
+            padding: 5px 10px;
+            pointer-events: none;
+        }
+
+        /* Eje 2: Los Que Cuidan (Testimonios de la comunidad fragmentados) */
+        .comunidad-section {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 40px;
+            border-left: 2px solid #555;
+        }
+
+        .testimonio {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-style: italic;
+            color: #bbb;
+        }
+
+        .testimonio span.autor {
+            display: block;
+            font-size: 0.9rem;
+            color: #777;
+            margin-top: 10px;
+            font-style: normal;
+        }
+
+        /* Enlace al fondo */
+        .deep-link-container {
+            text-align: center;
+            margin-top: 100px;
+            padding-bottom: 50px;
+        }
+
+        .deep-link {
+            color: #555;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            transition: color 1s;
+        }
+
+        .deep-link:hover {
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+    </style>
+</head>
+
+<body>
+<div id="main-wrapper" style="min-height: 100vh;">
+
+    <div class="container">
+
+        <header>
+            <h1>La Lucha Constante</h1>
+        </header>
+
+        <!-- Modals Container -->
+        <div id="folder-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.85); z-index: 999999; align-items: center; justify-content: center; backdrop-filter: blur(5px);">
+            <div style="background: #e8e4d9; padding: 40px; border-radius: 5px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; text-align: justify; border: 1px solid #c9c0b1; font-family: 'Courier New', Courier, monospace; color: #111; box-shadow: 0 10px 40px rgba(0,0,0,0.8); position: relative;">
+                <button id="close-modal" style="position: sticky; float: right; top: 0px; background: transparent; border: none; font-size: 2rem; cursor: pointer; color: #8b1c31; font-weight: bold; margin-top: -20px; margin-right: -20px;">×</button>
+                <h3 id="modal-exp" style="font-family: sans-serif; font-size: 0.9rem; color: #666; margin-top: 0; border-bottom: 1px dashed #ccc; padding-bottom: 10px; margin-bottom: 20px;">EXPEDIENTE</h3>
+                <div id="modal-content" style="font-size: 1.1rem; line-height: 1.6;"></div>
+                <div style="margin-top: 30px; border-top: 1px solid #ccc; padding-top: 10px; font-size: 0.8rem; color: #666; text-align: center;">CONFIDENCIAL - USO INTERNO EXCLUSIVO</div>
+            </div>
+        </div>
+
+        <!-- Representación visual de las carpetas de investigación reales estancadas -->
+        <div class="archivo-section">
+            
+            <div class="expediente clickable-folder" style="--rand: 0.2; cursor: pointer; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <div style="font-family: monospace; font-size: 1.5rem; text-align: center; color: #333; margin-bottom: 15px;">EXP. 4829-Z</div>
+                <hr style="border: 1px dashed #888; width: 80%; margin-bottom: 20px;">
+                <p style="color: #222; font-weight: bold;">Carpeta de investigación</p>
+                <p style="font-size:0.8rem; color:#444;">Sin avances por parte de la fiscalía.</p>
+                <div class="sello-ignorado">ARCHIVADO</div>
+                
+                <div class="folder-payload" style="display:none;" data-exp="4829-Z">
+                    <p>Se ha terminado el invierno, las flores nacen entre el asfalto y yo solo puedo preguntarme si el sol acaricia amablemente tu rostro o si, por el contrario, las raíces de los árboles te abrazan bajo el cemento. Cualquiera que sea la respuesta, me parece inconcebible no saberte entre mis brazos.</p>
+                    <p>¿Recuerdas las promesas que guardamos en el mañana? Se quedaron congeladas en mi refri mientras te busco. Pensé que serían como el alcohol, que pasa el tiempo en tanto se enfría, esperando el momento que llegues a mi casa para que compartamos una cerveza; y cuando apareces, todo se vuelve risas espolvoreadas con magia. En cambio, se siente más como las verduras que descansan en el cajón hasta abajo de aquel artefacto, las cuales, si te digo la verdad, se me olvida sacar porque no estás aquí para recordármelo y se echan a perder. Inicia una con un hongo pequeño que después infecta a otra, a otra, a otra y a otra… y luego toda la bolsa está llena de moho y tengo que limpiar el cajón entero. Entonces recuerdo que las verduras no son lo único echado a perder que se quedó enfriándose mientras te espero. Quizá también se están hongueando el resto de mis “mañana”.</p>
+                    <p>Aunque mis lágrimas, por alguna extraña razón, parecen nunca cambiar de estado. Corren con la misma fluidez de cualquier otro líquido cuando te pienso. Esas no las convertirán en hielo nunca. Tampoco mi furia. O mi deseo de conocer dónde estás.</p>
+                    <p>Cada que camino entre alguna multitud me encuentro examinando el rostro de quienes transitan, pensando si tienen el mismo lunar que tú o si, acorde al tiempo que ha pasado, podrías verte así. Tal vez tu cabello ha crecido hasta esa longitud o quizá estás en algún lugar soleado y te bronceaste como la persona que se aleja sin más.</p>
+                    <p>Sabes que jamás he sido de quedarme en paz, mucho menos sé hacerlo cuando se trata de ti. Es como si cuando desapareciste te llevaste contigo el recuerdo que tenía de la palabra descanso. “Quizá hoy es el día en que vuelvo a escuchar su voz”, pienso.</p>
+                    <p>Deseo.</p>
+                    <p>Espero…</p>
+                    <p>Esperar también es un verbo, y al pensarte todo me lleva a la acción. Me convertí en un cerillito, si quieres verlo así. La única diferencia es que ningún viento podrá apagarme mientras no estés tú. Toda brisa en mi contra se transforma en el oxígeno que aviva la llama, la furia, el dolor, la ternura, tu recuerdo, la esperanza…</p>
+                    <p>Espero prender en llamas el pajar entero si eso significa encontrarte. Que arda el sistema hasta la última piedra para que así mi pala entre fácilmente en la tierra.</p>
+                </div>
+            </div>
+
+            <div class="expediente clickable-folder" style="--rand: 0.8; cursor: pointer; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <div style="font-family: monospace; font-size: 1.5rem; text-align: center; color: #333; margin-bottom: 15px;">EXP. 1102-M</div>
+                <hr style="border: 1px dashed #888; width: 80%; margin-bottom: 20px;">
+                <p style="color: #222; font-weight: bold;">Carpeta de investigación</p>
+                <p style="font-size:0.8rem; color:#444;">Datos no integrados al sistema oficial.</p>
+                <div class="sello-ignorado">OMISIÓN</div>
+                
+                <div class="folder-payload" style="display:none;" data-exp="1102-M">
+                    <p>En la mañana despierto por las lágrimas de tu recuerdo. En la tarde pongo el mundo a andar. Así es hoy, así será el día de mañana, así será el día después de mañana, y así serán todos los que le sigan hasta encontrarte.</p>
+                    <p>Cuando los primeros rayos del sol tocan mi ventana a veces me quiebro entre su luz pues me es difícil continuar sin saber dónde estás. Aun así, dejo que su calor me recuerde la razón por la que estoy aquí. Cuanto más me atraviesa el dolor, más sé que tengo que seguir, que no tendríamos por qué ser cada vez más quienes despertamos por las punzadas incesantes de no saberles a nuestro lado.</p>
+                    <p>Dejo que las estrellas me guíen hacia ti mientras naufrago en el océano. Esperando que las olas me susurren dónde estás, a veces veo cómo otrxs llegan por fin a su destino. Quiero que todxs lleguemos a nuestro destino.</p>
+                    <p>Cuando supe que te llevaron al océano me aventé sin salvavidas ni linterna. Fue peligroso y doloroso, pero lo volví a hacer. Junto a mí se lanzaron otrxs que también están buscando, que lo dan todo en cada clavado. Aunque de vez en cuando el agua les sobrepasa y su cuerpo empieza a doler de lo fría que está. En esos momentos les digo: “si tú te cansas yo voy a seguir buscando, yo voy a seguir aquí”. Voy a seguir por ti y voy a seguir por ellxs, por todxs.</p>
+                    <p>Cuando llegue a la orilla no quiero que mi rastro sea un grano de arena; quiero dejar mares de arena que sequen el océano para que ninguna pizca de agua se interponga en encontrarte, en encontrarles. No puedo quedarme con los brazos cruzados ni ser indiferente frente al naufragio de nuestro dolor. Voy a prender una luz de esperanza en cada barco, en cada faro y en cada orilla para que podamos abrazarnos una vez más. Sin importar cuánto tarde, así será.</p>
+                </div>
+            </div>
+
+            <div class="expediente clickable-folder" style="--rand: 0.5; cursor: pointer; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <div style="font-family: monospace; font-size: 1.5rem; text-align: center; color: #333; margin-bottom: 15px;">EXP. 8943-X</div>
+                <hr style="border: 1px dashed #888; width: 80%; margin-bottom: 20px;">
+                <p style="color: #222; font-weight: bold;">Carpeta de investigación</p>
+                <p style="font-size:0.8rem; color:#444;">Sin líneas de investigación activas.</p>
+                <div class="sello-ignorado">ESTANCADO</div>
+                
+                <div class="folder-payload" style="display:none;" data-exp="8943-X">
+                    <p>Cuando me dan la noticia se me cierra la garganta, pierdo la respiración y el piso se parte a la mitad. En mi estómago cae una tonelada de miedos que se comienzan a instalar en cada uno de mis huesos. El aire no solo se va de mis pulmones, también me imposibilita ver con claridad debido a su densidad. Las sombras se hacen cada vez más altas hasta convertirse en rascacielos que intentan engullirme sin dejar rastro. No lograba calmarme nada al saber que te habían llevado.</p>
+                    <p>La primera vez que fui en tu búsqueda casi podía asegurar que mis vísceras se saldrían por mi boca, hasta por mi pecho. ¿Quién tenía el valor de enfrentarse a la grotesca imagen de restos dañados, de personas maltratadas en las formas más inhumanas posibles? Al menos yo no en ese momento. Con cada fragmento desenterrado no podía sino rezar y llorar, rezar y llorar, rezar y llorar. Incluso cuando terminamos y no me quedaba ni una sola lágrima, me deshacía en llanto mientras abrazaba mis piernas en posición fetal, con la esperanza de que sostenerme de esa manera permitiría a mi corazón quedarse en su lugar, aunque fuera por unos instantes.</p>
+                    <p>Al llegar a casa, apenas con la fuerza suficiente para lavarme la tierra, el lodo, las aguas negras y la sangre, mi cuerpo creyó necesario intentar limpiarnos desde el interior. El vómito vino una, y otra, y otra, y otra, y otra vez hasta que me quedé sin nada dentro; ahí comencé a desechar quizá la bilis, quizá otra parte de mi. Entonces mi estómago se quedó igual de vacío que mi pecho, el cual tampoco dejaba de doler.</p>
+                    <p>En aquel momento juré no volver porque no tenía la fuerza para pasar de nuevo el vacío, fuera en mi estómago o en mi pecho. Ahora, el tiempo pasa y la duda constante me persigue: “¿y si le encuentro?”, por lo que no puedo desperdiciar ni un segundo. Sé que cada centímetro de tierra excavado me acerca más a ti, tiene que hacerlo.</p>
+                </div>
+            </div>
+
+            <div class="expediente clickable-folder" style="--rand: 0.9; cursor: pointer; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <div style="font-family: monospace; font-size: 1.5rem; text-align: center; color: #333; margin-bottom: 15px;">EXP. 5691-J</div>
+                <hr style="border: 1px dashed #888; width: 80%; margin-bottom: 20px;">
+                <p style="color: #222; font-weight: bold;">Carpeta de investigación</p>
+                <p style="font-size:0.8rem; color:#444;">Pruebas extraviadas en traslado.</p>
+                <div class="sello-ignorado">EXTRAVIADO</div>
+                
+                <div class="folder-payload" style="display:none;" data-exp="5691-J">
+                    <p>Recuerdo aquel día como si fuera ayer. La emoción de mi madre al escuchar que tenía una entrevista de trabajo llenó la habitación como si encendieran la luz por primera vez. La ternura de mi padre se desbordaba durante cada segundo en el que me acompañó a comprar ropa nueva, diciendo que tenía que ir presentable para que me dieran el trabajo. Lo cierto es que yo era la más feliz de todxs. Parecía que por fin las cosas iban a mejorar, que íbamos a estar bien.</p>
+                    <p>El desconcierto fue lo primero que me atravesó al llegar al lugar de la entrevista. Muy tarde, cuando entendí la situación en la que me encontraba, no quedó más que terror. ¿Este es el precio de tener un sueño? ¿Este es el precio por desear salir adelante?</p>
+                    <p>El vestido era blanco de manga corta, llegaba abajo de las rodillas y tenía 2 volados discretos que le añadían volumen en la parte inferior. Mi padre prefería algo negro porque era “más formal”, aunque al ver los destellos amarillos que tenía, apenas perceptibles cuando la luz del sol se animaba a darles un pequeño beso, me decidí. Era sencillo pero mostraba brillo, como el futuro que imaginaba.</p>
+                    <p>Fue la primera vez en mucho tiempo que nos animamos a comprar ropa nueva. Quién diría que aquella prenda sería lo que me llevaría de vuelta con mi familia cuando no quedaba más nada. Su fulgor, por insignificante que pareciera, era la esperanza que vivía en cada fibra de mi ser y en cada latido de quienes me aman. Agradezco que al fin esté en sus brazos si bien solo queda su resplandor.</p>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const modal = document.getElementById('folder-modal');
+                const modalContent = document.getElementById('modal-content');
+                const modalExp = document.getElementById('modal-exp');
+                const closeBtn = document.getElementById('close-modal');
+
+                document.querySelectorAll('.clickable-folder').forEach(folder => {
+                    folder.addEventListener('click', () => {
+                        const payload = folder.querySelector('.folder-payload');
+                        modalExp.innerText = "NÚMERO DE EXPEDIENTE: " + payload.getAttribute('data-exp');
+                        modalContent.innerHTML = payload.innerHTML;
+                        modal.style.display = 'flex';
+                    });
+                });
+
+                closeBtn.addEventListener('click', () => {
+                    modal.style.display = 'none';
+                });
+
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.style.display = 'none';
+                    }
+                });
+            });
+        </script>
+
+<br><br>
+
+        
+
+        <div class="deep-link-container">
+            <a href="memoria_viva.html" class="deep-link">lo que queda · la memoria</a>
+        </div>
+
+    </div>
+
+</div>
+<script src="rostros.js"></script>
+<script src="trap.js"></script>
+</body>
+
+</html>
