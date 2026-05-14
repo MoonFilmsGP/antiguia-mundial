@@ -103,10 +103,22 @@
     window.isInternalNavigation = false;
     document.addEventListener('click', function(e) {
         const link = e.target.closest('a');
-        if (link && (!link.target || link.target === '_self')) {
-            window.isInternalNavigation = true;
+        if (link) {
+            // Un enlace es "interno" si no tiene target="_blank" y su destino está en el mismo host que el sitio
+            const isTargetBlank = link.target === '_blank';
+            const isSameHost = link.host === window.location.host;
+            // O si es una ancla interna
+            const isAnchor = link.getAttribute('href') && link.getAttribute('href').startsWith('#');
+            
+            if (!isTargetBlank && (isSameHost || isAnchor)) {
+                window.isInternalNavigation = true;
+                // Pequeño timeout por si la navegación es interrumpida
+                setTimeout(() => {
+                    window.isInternalNavigation = false;
+                }, 1000);
+            }
         }
-    });
+    }, true); // Capturarlo durante la fase de captura para asegurar que lo registremos antes de que otros scripts puedan detener el evento
 
     // ANIMACIÓN DE TRANSICIÓN PARA LOS ENLACES OCULTOS
     document.querySelectorAll('.hidden-link').forEach(link => {
