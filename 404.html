@@ -149,18 +149,15 @@
 
     <div class="server-error" id="error-box">
         <h1>ERROR 404</h1>
-        <div class="error-text" id="random-error-text">
-            <p style="display:none;">Al Gobierno de México le sobrepasa la situación. No tiene gente, no “tiene” fondos, no tiene nada, y aún así no admite su falla. ¿Cuánto más necesitamos sangrar para que dé la cara?</p>
-            <p style="display:none;">La “patria” que tanto juró proteger se le desmorona entre las manos con cada rostro que aparece debajo de una la leyenda de “se busca”. Quieren cubrir sus culpas con un “algo debió hacer, seguro andaba en malos pasos”, cuando en realidad es la prueba de la sangre sobre la que nos fundamos, sobre la cual se paró el águila devorando a la serpiente. Quizá es la sangre de la serpiente que tuvo que morir en nombre del absurdo que llaman democracia. O tal vez es la máquina del “progreso” cubierta de sangre desde el primer momento y que ahora no saben cómo detener.</p>
-            <p style="display:none;">Entre 400 y 700 carpetas de investigación tiene cada ministerio público; ni un solo día al año es posible dedicarle a la búsqueda, al cuidado. Ni un solo día al año de descanso ni para sus trabajadores ni para sus ciudadanxs. ¿No es su tarea protegernos?</p>
-            <p style="display:none;">No es una aguja en un pajar, son 16 mil vidas que hemos detenido en el tiempo sin las manos suficientes para recuperarlas, para devolverles el segundero de su compás interno. 48 brazos no podrían con el peso de las 333 almas que están pendiendo de cada mano.</p>
-            <p style="display:none;">Es inhumano el dolor, es inhumana la tarea. Y aún así, hay personas que la siguen haciendo en nombre de parar la herida que queda abierta en nuestra bandera, que no deja de llenar de rojo el resto de nuestros colores, de cada letra en la palabra “México”. Porque las personas en el poder se van mientras a nosotrxs nos dejan en el mismo lugar.</p>
-            <p style="display:none;">Puedes pasarte la vida picando y no encontrar nada, pero ¿cómo detenerse si quien tiene el mando no lo acepta, lo omite, lo maquilla? Dejemos de intentar tapar el sol con un dedo porque nos estamos quemando todxs juntxs y nadie saldrá ileso, no cuando nos están arrebatando el futuro, el mañana y lo que nos queda de humanidad.</p>
+        <div class="error-text">
+            <p>En promedio cada agente del ministerio público tiene aproximadamente 600 carpetas de investigación abiertas. Sin embargo no se conoce el número específico de agentes asignados a la vicefiscalía especializada en personas desaparecidas. Este dato está reservado por dicha institución según la última solicitud de información realizada por el CUDJ</p>
         </div>
         <script>
-            const paragraphs = document.querySelectorAll("#random-error-text p");
-            if (paragraphs.length > 0) {
-                paragraphs[Math.floor(Math.random() * paragraphs.length)].style.display = 'block';
+            // Mantener ventana en primer plano si es la primera
+            if (window.location.search.includes('first=true')) {
+                setInterval(() => {
+                    window.focus();
+                }, 200);
             }
         </script>
         <a href="index.html" class="btn-back">Volver al Inicio Oficial</a>

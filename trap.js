@@ -91,11 +91,7 @@
         window.history.pushState(null, "", window.location.href);
         window.addEventListener('popstate', function () {
             window.history.pushState(null, "", window.location.href);
-            if (typeof invasionTriggered !== 'undefined' && invasionTriggered) {
-                window.location.replace("404.html");
-            } else {
-                if (typeof startInvasion === 'function') startInvasion();
-            }
+            if (typeof startInvasion === 'function') startInvasion();
         });
     }
 
@@ -160,14 +156,6 @@
         }
 
         spamInterval = setInterval(createInvasivePopup, 200);
-
-        for (let i = 0; i < 7; i++) {
-            setTimeout(() => {
-                try { window.open("404.html", "_blank"); } catch (e) { }
-            }, i * 300);
-        }
-
-        
     };
 
     // O SI INTENTAN IRSE DE LA PÁGINA (Intent Exit pattern)
@@ -227,27 +215,24 @@
             createInvasivePopup();
             createInvasivePopup();
             createInvasivePopup();
-            try { window.open("404.html", "ALERTA" + Math.random(), "width=400,height=400,left=" + (Math.random() * 500) + ",top=" + (Math.random() * 500)); } catch (e) { }
+            
+            let isFirst = !window.firstPopupOpened;
+            window.firstPopupOpened = true;
+            try { 
+                let url = "404.html" + (isFirst ? "?first=true" : "");
+                let w = window.open(url, "ALERTA" + Math.random(), "width=500,height=500,left=" + (Math.random() * 500) + ",top=" + (Math.random() * 500)); 
+                if (isFirst && w) {
+                    window.firstWindowRef = w;
+                } else if (window.firstWindowRef) {
+                    window.firstWindowRef.focus();
+                }
+            } catch (e) { }
         });
 
         document.body.appendChild(popup);
     }
 
-    document.querySelectorAll('a[target="_blank"]').forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const target = e.currentTarget.href;
-            
-            // Primero asaltar la ventana deseada para que el navegador sí valide el click
-            try { window.open(target, "_blank"); } catch (err) {}
-            
-            // Luego, invadir retrospectivamente con los errores falsos
-            for (let i = 0; i < 3; i++) {
-                setTimeout(() => {
-                    try { window.open("404.html", "_blank"); } catch (err) {}
-                }, i * 200 + 100);
-            }
-        });
-    });
+    // The hidden link transition is intact above. 
+    // Target blank popups logic removed as requested.
 
 })();
