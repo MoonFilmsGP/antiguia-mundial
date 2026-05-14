@@ -85,62 +85,7 @@
             background-color: #1a4a40;
         }
 
-        /* ELEMENTOS OCULTOS / PERTURBADORES */
-        .hidden-truth {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            pointer-events: none;
-            z-index: 1;
-            background: radial-gradient(circle, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 1) 100%);
-            transition: opacity 5s ease-in;
-            /* Aparece muy lento */
-        }
 
-        .poster {
-            background: #fff;
-            padding: 30px;
-            border: 5px solid #000;
-            max-width: 400px;
-            text-align: center;
-            font-family: Arial, sans-serif;
-            box-shadow: 0 0 50px rgba(255, 255, 255, 0.1);
-            pointer-events: auto;
-        }
-
-        .poster h2 {
-            font-size: 3rem;
-            margin: 0 0 10px 0;
-            text-transform: uppercase;
-            letter-spacing: -2px;
-            color: black;
-        }
-
-        .poster img {
-            width: 100%;
-            height: 300px;
-            background: #333;
-            margin-bottom: 20px;
-            border: 2px solid #000;
-            object-fit: contain;
-        }
-
-        .poster h3 {
-            font-size: 1.5rem;
-            margin: 0 0 5px 0;
-        }
-
-        .poster p {
-            font-size: 1.2rem;
-            margin: 0;
-        }
 
         </style>
 </head>
@@ -169,51 +114,17 @@
         </div>
     </div>
 
-    <div class="hidden-truth" id="truth-layer">
-        <div class="poster">
-            <h2>¿DÓNDE ESTÁ?</h2>
-            <!-- El rostro se cargará por JS -->
-            <img src="" alt="Desaparecido">
-            <h3 style="color: #8b1c31; margin-top: 15px; letter-spacing: 1px;">NO NOS VAN A BORRAR</h3>
-        </div>
-    </div>
-
-    <script src="rostros.js"></script>
     <script>
-        setTimeout(() => {
-            const errorBox = document.getElementById('error-box');
-            const truthLayer = document.getElementById('truth-layer');
-            const traceId = document.getElementById('trace-id');
-
-            // Set picture dynamically
-            const posterImg = truthLayer.querySelector('img');
-            if (window.ROSTROS_LIST && window.ROSTROS_LIST.length > 0) {
-                const randomPic = window.ROSTROS_LIST[Math.floor(Math.random() * window.ROSTROS_LIST.length)];
-                posterImg.src = "ROSTROS/" + randomPic;
+        const traceId = document.getElementById('trace-id');
+        // Efecto de corrupción de texto en el error
+        setInterval(() => {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()';
+            let randomStr = '';
+            for (let i = 0; i < 8; i++) {
+                randomStr += chars.charAt(Math.floor(Math.random() * chars.length));
             }
-
-            // Efecto de corrupción de texto en el error
-            setInterval(() => {
-                const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()';
-                let randomStr = '';
-                for (let i = 0; i < 8; i++) {
-                    randomStr += chars.charAt(Math.floor(Math.random() * chars.length));
-                }
-                traceId.innerText = randomStr;
-            }, 100);
-
-            // Desaparecer la UI "oficial" y revelar la verdad
-            errorBox.style.transition = "opacity 3s, transform 3s";
-            errorBox.style.opacity = "0";
-            errorBox.style.transform = "scale(0.8)";
-            errorBox.style.pointerEvents = "none";
-
-            truthLayer.style.opacity = "1";
-
-            // Jugar con el fondo oscuro
-            document.body.style.backgroundColor = "#000";
-
-        }, 10000); // Tarda 10 segundos en revelar la capa oculta
+            if (traceId) traceId.innerText = randomStr;
+        }, 100);
     </script>
 </body>
 </html>
